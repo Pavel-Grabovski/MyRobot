@@ -1,0 +1,9 @@
+C:\Users\PAGrabovskii\source\repos\StructuralStrengthening\StructuralStrengthening\bin\Debug\StructuralStrengthening.dll
+C:\Users\PAGrabovskii\source\repos\StructuralStrengthening\StructuralStrengthening\bin\Debug\StructuralStrengthening.pdb
+C:\Users\PAGrabovskii\source\repos\StructuralStrengthening\StructuralStrengthening\obj\Debug\StructuralStrengthening.csproj.CoreCompileInputs.cache
+C:\Users\PAGrabovskii\source\repos\StructuralStrengthening\StructuralStrengthening\obj\Debug\StructuralStrengthening.dll
+C:\Users\PAGrabovskii\source\repos\StructuralStrengthening\StructuralStrengthening\obj\Debug\StructuralStrengthening.pdb
+C:\Users\PAGrabovskii\source\repos\StructuralStrengthening\StructuralStrengthening\obj\Debug\StructuralStrengthening.Properties.Resources.resources
+C:\Users\PAGrabovskii\source\repos\StructuralStrengthening\StructuralStrengthening\obj\Debug\StructuralStrengthening.StructuralStrengtheningView.resources
+C:\Users\PAGrabovskii\source\repos\StructuralStrengthening\StructuralStrengthening\obj\Debug\StructuralStrengthening.csproj.GenerateResource.cache
+C:\Users\PAGrabovskii\source\repos\StructuralStrengthening\StructuralStrengthening\obj\Debug\StructuralStrengthening.csprojAssemblyReference.cache
