@@ -27,7 +27,7 @@ namespace StructuralStrengthening
         public ReinforcementSquareColumnsView(ExternalEvent exEvent, RequestHandlerCreateRebar handler)
         {
             InitializeComponent();
-            _clearTextGroupBox(groupParamTypeReinforcement);
+            //_clearTextGroupBox(groupParamTypeReinforcement);
             ReqHandler = handler;
             ExEvent = exEvent;
         }
@@ -70,8 +70,8 @@ namespace StructuralStrengthening
 
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
-            this.textBoxLengthMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
-            this.textBoxLengthLowerTransverseReinforcement.Location = new System.Drawing.Point(236, 445);
+            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
+            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(236, 445);
             this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(65, 476);
             this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(59, 445);
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(62, 324);
@@ -107,8 +107,8 @@ namespace StructuralStrengthening
 
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
-            this.textBoxLengthMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
-            this.textBoxLengthLowerTransverseReinforcement.Location = new System.Drawing.Point(236, 445);
+            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
+            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(236, 445);
             this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(65, 476);
             this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(59, 445);
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(62, 324);
@@ -145,8 +145,8 @@ namespace StructuralStrengthening
 
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
-            this.textBoxLengthMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
-            this.textBoxLengthLowerTransverseReinforcement.Location = new System.Drawing.Point(236, 445);
+            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
+            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(236, 445);
             this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(65, 476);
             this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(59, 445);
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(62, 324);
@@ -188,8 +188,8 @@ namespace StructuralStrengthening
 
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
-            this.textBoxLengthMiddleTransverseReinforcement.Location = new System.Drawing.Point(242, 321);
-            this.textBoxLengthLowerTransverseReinforcement.Location = new System.Drawing.Point(242, 445);
+            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(242, 321);
+            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(242, 445);
             this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(67, 476);
             this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(55, 444);
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(56, 323);
@@ -231,8 +231,8 @@ namespace StructuralStrengthening
 
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(249, 83);
-            this.textBoxLengthMiddleTransverseReinforcement.Location = new System.Drawing.Point(248, 321);
-            this.textBoxLengthLowerTransverseReinforcement.Location = new System.Drawing.Point(249, 445);
+            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(248, 321);
+            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(249, 445);
             this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(46, 477);
             this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(46, 444);
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(48, 323);
@@ -276,8 +276,8 @@ namespace StructuralStrengthening
 
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(249, 83);
-            this.textBoxLengthMiddleTransverseReinforcement.Location = new System.Drawing.Point(248, 321);
-            this.textBoxLengthLowerTransverseReinforcement.Location = new System.Drawing.Point(249, 445);
+            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(248, 321);
+            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(249, 445);
             this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(46, 477);
             this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(46, 444);
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(48, 323);
@@ -317,16 +317,26 @@ namespace StructuralStrengthening
             }
         }
 
-        public void AddListSelectsColumns(List<Autodesk.Revit.DB.Reference> selectElements)
+        public void AddListSelectsColumns(List<Autodesk.Revit.DB.Element> selectElements)
         {
             this.combBoxColumns.Items.Clear();
             SetCountColumnValue(selectElements.Count);
-            foreach (Autodesk.Revit.DB.Reference element in selectElements)
+            foreach (Autodesk.Revit.DB.Element element in selectElements)
             {
                 this.combBoxColumns.Items.Add(element);
-                this.combBoxColumns.DisplayMember = "ElementId";
+                this.combBoxColumns.DisplayMember = "Id";
             }
         }
+        /*public void AddListSelectsColumns(List<Autodesk.Revit.DB.ElementId> selectElements)
+        {
+            this.combBoxColumns.Items.Clear();
+            SetCountColumnValue(selectElements.Count);
+            foreach (Autodesk.Revit.DB.ElementId elementId in selectElements)
+            {
+                this.combBoxColumns.Items.Add(elementId);
+                this.combBoxColumns.DisplayMember = "Id";
+            }
+        }*/
 
         private void _comboBoxColumns_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -361,6 +371,10 @@ namespace StructuralStrengthening
         {
             this.lblSectionValue.Text = value;
         }
+
+        /// <summary>
+        /// Отключение контролов во время выбора колонн в проекте
+        /// </summary>
         public void OffControlsSelectionColumns()
         {
             foreach (Control control in groupBoxSelectionColumns.Controls)
@@ -371,6 +385,10 @@ namespace StructuralStrengthening
                 }
             }
         }
+
+        /// <summary>
+        /// Активация контролов после выбора колонн в проекте
+        /// </summary>
         public void OnControlsSelectionColumns()
         {
             foreach (Control control in groupBoxSelectionColumns.Controls)
@@ -598,5 +616,68 @@ namespace StructuralStrengthening
         {
             return Convert.ToDouble(this.textBoxSecondСenterLowerRebarOffset_2.Text);
         }
+
+        /// <summary>
+        /// Обращение к textBox, где вводится значения отступа снизу от начало колонны всех продольных стержней
+        /// </summary>
+        /// <returns>
+        /// Отступ снизу от начало колонны всех продольных стержней
+        /// </returns>
+        public double GetValueBoxBottomOffsetMainBars()
+        {
+            return Convert.ToDouble(this.textBoxBottomOffsetMainBars.Text);
+        }
+
+        /// <summary>
+        /// Обращение к textBox, где вводится значения дополнительного смещения изгиба стержня
+        /// </summary>
+        /// <returns>
+        /// Дополнительное спещение загиба стержня
+        /// </returns>
+        public double GetValueAdditionalOffsetBendBar()
+        {
+            return Convert.ToDouble(this.textBoxAdditionalOffsetBendBar.Text);
+        }
+
+        /// <summary>
+        /// Покрасить textBox, где вводится значения дополнительного смещения изгиба стержня
+        /// </summary>
+        public void SetColorTextBoxAdditionalOffsetBendBar(string color)
+        {  
+            if(color == "Red")
+            {
+                this.textBoxAdditionalOffsetBendBar.BackColor = Color.Red;
+            }
+            else if(color == "White")
+            {
+                this.textBoxAdditionalOffsetBendBar.BackColor = Color.White;
+            }
+            
+        }
+
+        /// <summary>
+        /// Обращение к checkBox, нужно ли повернуть выпуски внутрь колонны или нет
+        /// </summary>
+        public bool GetOutletsInside()
+        {
+            return this.checkBoxIsOutletsInside.Checked;
+        }
+
+        /// <summary>
+        /// Обращение к checkBox, показать арматуру на виде 3D телом.
+        /// </summary>
+        public bool GetSolidInView()
+        {
+            return this.checkBoxRebarSolidInView.Checked;
+        }
+        /// <summary>
+        /// Обращение к checkBox, показать арматуру неперекрытой
+        /// </summary>
+        public bool GetShowUnoverlapped()
+        {
+            return this.checkBoxShowUnoverlapped.Checked;
+        }
+
     }
 }
+

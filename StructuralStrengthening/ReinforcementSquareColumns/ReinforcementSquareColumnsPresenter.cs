@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace ReinforcementSquareColumns
 {
@@ -28,13 +29,36 @@ namespace ReinforcementSquareColumns
             this.doc = _revit.Application.ActiveUIDocument.Document;
 
             this._view.AddTypesRebarToComboBoxes(model.RebarTypes);
+
+            _handlerSelectColumnsInadvance();
+
             this._view.SelectColumnsToProjeckClick += new EventHandler(_view_SelectColumnsButton);
-            this._view.SelectColumnToListClick += new EventHandler(_view_SelectColumnsComboBox);
+            this._view.SelectColumnToListClick += new EventHandler(_view_SelectColumnComboBox);
             this._view.SeleckAllColumnCheck += new EventHandler(_view_SeleckAllColumnCheck);
             this._view.ReinforceColumnsClick += new EventHandler(_view_ReinforceColumnsButton);
         }
 
+        /// <summary>
+        /// обработка элементов, которые были выделены до вызова плагина
+        /// </summary>
+        private void _handlerSelectColumnsInadvance()
+        {
+            ICollection<ElementId> elementIdsSelected = _revit.Application.ActiveUIDocument.Selection.GetElementIds();
 
+            foreach (ElementId elementId in elementIdsSelected)
+            {
+                Element element = doc.GetElement(elementId);
+                SelectedElements.Add(element);
+            }
+
+            this._view.AddListSelectsColumns(SelectedElements);
+            _displayingInfoAboutReceivedObjects(SelectedElements);
+
+        }
+
+        /// <summary>
+        /// Обрабатывает начатие "Выбрать все колонны"(checkBox)
+        /// </summary>
         private void _view_SeleckAllColumnCheck(object sender, EventArgs e)
         {
             if (_view.GetCheckBoxSeleckAllColumnsIsChecked())
@@ -51,10 +75,17 @@ namespace ReinforcementSquareColumns
             _displayingInfoAboutReceivedObjects(SelectedElements);
         }
 
-        private void _view_SelectColumnsComboBox(object sender, EventArgs e)
+        /// <summary>
+        /// Обрабатывает выбор 1 элемента из списка(comboBox)
+        /// </summary>
+        private void _view_SelectColumnComboBox(object sender, EventArgs e)
         {
             _displayingInfoAboutReceivedObjects(doc.GetElement(new ElementId(_view.ElementIdInt())));
         }
+
+        /// <summary>
+        /// Обрабатывает нажатие на кнопку "Выбрать колонны"
+        /// </summary>
         private void _view_SelectColumnsButton(object sender, EventArgs e)
         {
             this.SelectedElements.Clear();
@@ -67,14 +98,16 @@ namespace ReinforcementSquareColumns
             }
             //MessageBox.Show(string.Format($"Выбрано {selectElements.Count} объектов."));
 
-            this._view.AddListSelectsColumns(selectElements);
+            this._view.AddListSelectsColumns(SelectedElements);
             this._view.OnControlsSelectionColumns();
             _displayingInfoAboutReceivedObjects(SelectedElements);
 
             this._view.Activate();
         }
 
-        // Заполнение данных о объектах. Данный метод обрабатывает список, если 1 будет, то вызывается другая реализация этого метода
+        /// <summary>
+        /// // Заполнение данных о объектах. Данный метод обрабатывает список
+        /// </summary>
         private void _displayingInfoAboutReceivedObjects(List<Element> selectElements)
         {
             if (SelectedElements.Count == 1)
@@ -133,6 +166,10 @@ namespace ReinforcementSquareColumns
                 this._view.SetRebarCoverTypesValue($"{ValueParameterRebarCorver} mm");
             }
         }
+
+        /// <summary>
+        /// Заполнение данных о одном выбранном объекте в спиcке(comboBox)
+        /// </summary>
         private void _displayingInfoAboutReceivedObjects(Element element)
         {
             string _familyName = element.get_Parameter(BuiltInParameter.ELEM_FAMILY_PARAM).AsValueString();
@@ -181,6 +218,10 @@ namespace ReinforcementSquareColumns
                 setValueLabel("<разные>");
             }
         }
+
+        /// <summary>
+        /// Вызов внешнего класса для армирования и изменения в модель в немодальном режиме
+        /// </summary>
         private void _view_ReinforceColumnsButton(object sender, EventArgs e)
         {
 

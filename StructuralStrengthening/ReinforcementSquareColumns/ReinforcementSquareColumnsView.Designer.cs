@@ -63,14 +63,17 @@ namespace StructuralStrengthening
             this.combBoxColumns = new System.Windows.Forms.ComboBox();
             this.lblCountColumnValue = new System.Windows.Forms.Label();
             this.groupBoxRebarOutletTypes = new System.Windows.Forms.GroupBox();
+            this.textBoxAdditionalOffsetBendBar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.checkBoxIsOutletsInside = new System.Windows.Forms.CheckBox();
             this.radioButMainOverlappingRods = new System.Windows.Forms.RadioButton();
             this.radioButMainWeldingRods = new System.Windows.Forms.RadioButton();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.groupParamSizeStepReinforcement = new System.Windows.Forms.GroupBox();
-            this.textBoxLengthLowerTransverseReinforcement = new System.Windows.Forms.TextBox();
-            this.textBoxLengthMiddleTransverseReinforcement = new System.Windows.Forms.TextBox();
+            this.textBoxBottomOffsetMainBars = new System.Windows.Forms.TextBox();
+            this.textBoxCountLowerTransverseReinforcement = new System.Windows.Forms.TextBox();
+            this.textBoxCountMiddleTransverseReinforcement = new System.Windows.Forms.TextBox();
             this.textBoxStepMiddleTransverseReinforcement = new System.Windows.Forms.TextBox();
             this.textBoxFirstStirrupOffset = new System.Windows.Forms.TextBox();
             this.textBoxStepLowerTransverseReinforcement = new System.Windows.Forms.TextBox();
@@ -97,9 +100,9 @@ namespace StructuralStrengthening
             this.butReinforceColumns = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBoxRebarSolidInView = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowUnoverlapped = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.groupBoxReinforcementType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -515,8 +518,9 @@ namespace StructuralStrengthening
             // 
             // groupBoxRebarOutletTypes
             // 
+            this.groupBoxRebarOutletTypes.Controls.Add(this.textBoxAdditionalOffsetBendBar);
             this.groupBoxRebarOutletTypes.Controls.Add(this.label4);
-            this.groupBoxRebarOutletTypes.Controls.Add(this.checkBox4);
+            this.groupBoxRebarOutletTypes.Controls.Add(this.checkBoxIsOutletsInside);
             this.groupBoxRebarOutletTypes.Controls.Add(this.radioButMainOverlappingRods);
             this.groupBoxRebarOutletTypes.Controls.Add(this.radioButMainWeldingRods);
             this.groupBoxRebarOutletTypes.Controls.Add(this.pictureBox8);
@@ -529,6 +533,14 @@ namespace StructuralStrengthening
             this.groupBoxRebarOutletTypes.TabIndex = 6;
             this.groupBoxRebarOutletTypes.TabStop = false;
             // 
+            // textBoxAdditionalOffsetBendBar
+            // 
+            this.textBoxAdditionalOffsetBendBar.Location = new System.Drawing.Point(358, 160);
+            this.textBoxAdditionalOffsetBendBar.Name = "textBoxAdditionalOffsetBendBar";
+            this.textBoxAdditionalOffsetBendBar.Size = new System.Drawing.Size(59, 20);
+            this.textBoxAdditionalOffsetBendBar.TabIndex = 9;
+            this.textBoxAdditionalOffsetBendBar.Text = "10";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -539,6 +551,17 @@ namespace StructuralStrengthening
             this.label4.TabIndex = 1;
             this.label4.Text = "Типы выпусков";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // checkBoxIsOutletsInside
+            // 
+            this.checkBoxIsOutletsInside.AutoSize = true;
+            this.checkBoxIsOutletsInside.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxIsOutletsInside.Location = new System.Drawing.Point(336, 56);
+            this.checkBoxIsOutletsInside.Name = "checkBoxIsOutletsInside";
+            this.checkBoxIsOutletsInside.Size = new System.Drawing.Size(122, 17);
+            this.checkBoxIsOutletsInside.TabIndex = 8;
+            this.checkBoxIsOutletsInside.Text = "Выпуски во внутрь";
+            this.checkBoxIsOutletsInside.UseVisualStyleBackColor = true;
             // 
             // radioButMainOverlappingRods
             // 
@@ -589,8 +612,9 @@ namespace StructuralStrengthening
             // 
             this.groupParamSizeStepReinforcement.BackgroundImage = global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType1_SizeAndStep;
             this.groupParamSizeStepReinforcement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxLengthLowerTransverseReinforcement);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxLengthMiddleTransverseReinforcement);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxBottomOffsetMainBars);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountLowerTransverseReinforcement);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountMiddleTransverseReinforcement);
             this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepMiddleTransverseReinforcement);
             this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxFirstStirrupOffset);
             this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepLowerTransverseReinforcement);
@@ -606,26 +630,37 @@ namespace StructuralStrengthening
             this.groupParamSizeStepReinforcement.TabIndex = 6;
             this.groupParamSizeStepReinforcement.TabStop = false;
             // 
-            // textBoxLengthLowerTransverseReinforcement
+            // textBoxBottomOffsetMainBars
             // 
-            this.textBoxLengthLowerTransverseReinforcement.Location = new System.Drawing.Point(236, 445);
-            this.textBoxLengthLowerTransverseReinforcement.Name = "textBoxLengthLowerTransverseReinforcement";
-            this.textBoxLengthLowerTransverseReinforcement.Size = new System.Drawing.Size(45, 20);
-            this.textBoxLengthLowerTransverseReinforcement.TabIndex = 2;
+            this.textBoxBottomOffsetMainBars.Location = new System.Drawing.Point(251, 476);
+            this.textBoxBottomOffsetMainBars.Name = "textBoxBottomOffsetMainBars";
+            this.textBoxBottomOffsetMainBars.Size = new System.Drawing.Size(45, 20);
+            this.textBoxBottomOffsetMainBars.TabIndex = 2;
+            this.textBoxBottomOffsetMainBars.Text = "600";
             // 
-            // textBoxLengthMiddleTransverseReinforcement
+            // textBoxCountLowerTransverseReinforcement
             // 
-            this.textBoxLengthMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
-            this.textBoxLengthMiddleTransverseReinforcement.Name = "textBoxLengthMiddleTransverseReinforcement";
-            this.textBoxLengthMiddleTransverseReinforcement.Size = new System.Drawing.Size(40, 20);
-            this.textBoxLengthMiddleTransverseReinforcement.TabIndex = 2;
+            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(277, 442);
+            this.textBoxCountLowerTransverseReinforcement.Name = "textBoxCountLowerTransverseReinforcement";
+            this.textBoxCountLowerTransverseReinforcement.Size = new System.Drawing.Size(45, 20);
+            this.textBoxCountLowerTransverseReinforcement.TabIndex = 2;
+            this.textBoxCountLowerTransverseReinforcement.Text = "3";
+            // 
+            // textBoxCountMiddleTransverseReinforcement
+            // 
+            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(277, 321);
+            this.textBoxCountMiddleTransverseReinforcement.Name = "textBoxCountMiddleTransverseReinforcement";
+            this.textBoxCountMiddleTransverseReinforcement.Size = new System.Drawing.Size(40, 20);
+            this.textBoxCountMiddleTransverseReinforcement.TabIndex = 2;
+            this.textBoxCountMiddleTransverseReinforcement.Text = "5";
             // 
             // textBoxStepMiddleTransverseReinforcement
             // 
-            this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(62, 324);
+            this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(217, 321);
             this.textBoxStepMiddleTransverseReinforcement.Name = "textBoxStepMiddleTransverseReinforcement";
             this.textBoxStepMiddleTransverseReinforcement.Size = new System.Drawing.Size(45, 20);
             this.textBoxStepMiddleTransverseReinforcement.TabIndex = 2;
+            this.textBoxStepMiddleTransverseReinforcement.Text = "200";
             // 
             // textBoxFirstStirrupOffset
             // 
@@ -633,13 +668,15 @@ namespace StructuralStrengthening
             this.textBoxFirstStirrupOffset.Name = "textBoxFirstStirrupOffset";
             this.textBoxFirstStirrupOffset.Size = new System.Drawing.Size(45, 20);
             this.textBoxFirstStirrupOffset.TabIndex = 2;
+            this.textBoxFirstStirrupOffset.Text = "500";
             // 
             // textBoxStepLowerTransverseReinforcement
             // 
-            this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(59, 445);
+            this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(217, 445);
             this.textBoxStepLowerTransverseReinforcement.Name = "textBoxStepLowerTransverseReinforcement";
             this.textBoxStepLowerTransverseReinforcement.Size = new System.Drawing.Size(45, 20);
             this.textBoxStepLowerTransverseReinforcement.TabIndex = 2;
+            this.textBoxStepLowerTransverseReinforcement.Text = "100";
             // 
             // textBoxStepTopTransverseReinforcement
             // 
@@ -654,6 +691,7 @@ namespace StructuralStrengthening
             this.textBoxOverlapThickness.Name = "textBoxOverlapThickness";
             this.textBoxOverlapThickness.Size = new System.Drawing.Size(45, 20);
             this.textBoxOverlapThickness.TabIndex = 2;
+            this.textBoxOverlapThickness.Text = "200";
             // 
             // textBoxRebarOutletsLength
             // 
@@ -661,6 +699,7 @@ namespace StructuralStrengthening
             this.textBoxRebarOutletsLength.Name = "textBoxRebarOutletsLength";
             this.textBoxRebarOutletsLength.Size = new System.Drawing.Size(45, 20);
             this.textBoxRebarOutletsLength.TabIndex = 2;
+            this.textBoxRebarOutletsLength.Text = "500";
             // 
             // label6
             // 
@@ -764,7 +803,7 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterLeftRebarOffset_1.Name = "textBoxSecondСenterLeftRebarOffset_1";
             this.textBoxSecondСenterLeftRebarOffset_1.Size = new System.Drawing.Size(50, 20);
             this.textBoxSecondСenterLeftRebarOffset_1.TabIndex = 2;
-            this.textBoxSecondСenterLeftRebarOffset_1.Text = "SecondСenterLeftRebarOffset_1";
+            this.textBoxSecondСenterLeftRebarOffset_1.Text = "50";
             this.toolTip.SetToolTip(this.textBoxSecondСenterLeftRebarOffset_1, "Укажите отступ!");
             // 
             // textBoxSecondСenterTopRebarOffset_2
@@ -774,7 +813,7 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterTopRebarOffset_2.Name = "textBoxSecondСenterTopRebarOffset_2";
             this.textBoxSecondСenterTopRebarOffset_2.Size = new System.Drawing.Size(45, 20);
             this.textBoxSecondСenterTopRebarOffset_2.TabIndex = 2;
-            this.textBoxSecondСenterTopRebarOffset_2.Text = "SecondTopRebarOffset_2";
+            this.textBoxSecondСenterTopRebarOffset_2.Text = "45";
             this.toolTip.SetToolTip(this.textBoxSecondСenterTopRebarOffset_2, "Укажите отступ!");
             // 
             // textBoxSecondСenterTopRebarOffset_1
@@ -784,7 +823,7 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterTopRebarOffset_1.Name = "textBoxSecondСenterTopRebarOffset_1";
             this.textBoxSecondСenterTopRebarOffset_1.Size = new System.Drawing.Size(45, 20);
             this.textBoxSecondСenterTopRebarOffset_1.TabIndex = 2;
-            this.textBoxSecondСenterTopRebarOffset_1.Text = "SecondTopRebarOffset_1";
+            this.textBoxSecondСenterTopRebarOffset_1.Text = "55";
             this.toolTip.SetToolTip(this.textBoxSecondСenterTopRebarOffset_1, "Укажите отступ!");
             // 
             // textBoxSecondСenterLowerRebarOffset_1
@@ -794,7 +833,7 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterLowerRebarOffset_1.Name = "textBoxSecondСenterLowerRebarOffset_1";
             this.textBoxSecondСenterLowerRebarOffset_1.Size = new System.Drawing.Size(45, 20);
             this.textBoxSecondСenterLowerRebarOffset_1.TabIndex = 2;
-            this.textBoxSecondСenterLowerRebarOffset_1.Text = "SecondLowerRebarOffset_1";
+            this.textBoxSecondСenterLowerRebarOffset_1.Text = "65";
             this.toolTip.SetToolTip(this.textBoxSecondСenterLowerRebarOffset_1, "Укажите отступ!");
             // 
             // textBoxSecondСenterLowerRebarOffset_2
@@ -804,7 +843,7 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterLowerRebarOffset_2.Name = "textBoxSecondСenterLowerRebarOffset_2";
             this.textBoxSecondСenterLowerRebarOffset_2.Size = new System.Drawing.Size(45, 20);
             this.textBoxSecondСenterLowerRebarOffset_2.TabIndex = 2;
-            this.textBoxSecondСenterLowerRebarOffset_2.Text = "SecondLowerRebarOffset_2";
+            this.textBoxSecondСenterLowerRebarOffset_2.Text = "75";
             this.toolTip.SetToolTip(this.textBoxSecondСenterLowerRebarOffset_2, "Укажите отступ!");
             // 
             // textBoxSecondСenterLeftRebarOffset_2
@@ -814,7 +853,7 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterLeftRebarOffset_2.Name = "textBoxSecondСenterLeftRebarOffset_2";
             this.textBoxSecondСenterLeftRebarOffset_2.Size = new System.Drawing.Size(60, 20);
             this.textBoxSecondСenterLeftRebarOffset_2.TabIndex = 2;
-            this.textBoxSecondСenterLeftRebarOffset_2.Text = "SecondСenterLeftRebarOffset_2";
+            this.textBoxSecondСenterLeftRebarOffset_2.Text = "40";
             this.toolTip.SetToolTip(this.textBoxSecondСenterLeftRebarOffset_2, "Укажите отступ!");
             // 
             // textBoxSecondСenterRightRebarOffset_2
@@ -824,7 +863,7 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterRightRebarOffset_2.Name = "textBoxSecondСenterRightRebarOffset_2";
             this.textBoxSecondСenterRightRebarOffset_2.Size = new System.Drawing.Size(60, 20);
             this.textBoxSecondСenterRightRebarOffset_2.TabIndex = 2;
-            this.textBoxSecondСenterRightRebarOffset_2.Text = "SecondСenterRightRebarOffset_2";
+            this.textBoxSecondСenterRightRebarOffset_2.Text = "70";
             this.toolTip.SetToolTip(this.textBoxSecondСenterRightRebarOffset_2, "Укажите отступ!");
             // 
             // textBoxSecondСenterRightRebarOffset_1
@@ -834,7 +873,7 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterRightRebarOffset_1.Name = "textBoxSecondСenterRightRebarOffset_1";
             this.textBoxSecondСenterRightRebarOffset_1.Size = new System.Drawing.Size(50, 20);
             this.textBoxSecondСenterRightRebarOffset_1.TabIndex = 2;
-            this.textBoxSecondСenterRightRebarOffset_1.Text = "SecondСenterRightRebarOffset_1";
+            this.textBoxSecondСenterRightRebarOffset_1.Text = "60";
             this.toolTip.SetToolTip(this.textBoxSecondСenterRightRebarOffset_1, "Укажите отступ!");
             // 
             // label5
@@ -879,6 +918,7 @@ namespace StructuralStrengthening
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox1.Enabled = false;
             this.checkBox1.Location = new System.Drawing.Point(1272, 457);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(133, 17);
@@ -886,38 +926,42 @@ namespace StructuralStrengthening
             this.checkBox1.Text = "Объединить в группу";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // checkBoxRebarSolidInView
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox2.Location = new System.Drawing.Point(1270, 375);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(122, 17);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = "Показать как тело";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxRebarSolidInView.AutoSize = true;
+            this.checkBoxRebarSolidInView.Checked = true;
+            this.checkBoxRebarSolidInView.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxRebarSolidInView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxRebarSolidInView.Location = new System.Drawing.Point(1270, 375);
+            this.checkBoxRebarSolidInView.Name = "checkBoxRebarSolidInView";
+            this.checkBoxRebarSolidInView.Size = new System.Drawing.Size(122, 17);
+            this.checkBoxRebarSolidInView.TabIndex = 8;
+            this.checkBoxRebarSolidInView.Text = "Показать как тело";
+            this.checkBoxRebarSolidInView.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // checkBoxShowUnoverlapped
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox3.Location = new System.Drawing.Point(1270, 398);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(153, 17);
-            this.checkBox3.TabIndex = 8;
-            this.checkBox3.Text = "Показать неперекрытые";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBoxShowUnoverlapped.AutoSize = true;
+            this.checkBoxShowUnoverlapped.Checked = true;
+            this.checkBoxShowUnoverlapped.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowUnoverlapped.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxShowUnoverlapped.Location = new System.Drawing.Point(1270, 398);
+            this.checkBoxShowUnoverlapped.Name = "checkBoxShowUnoverlapped";
+            this.checkBoxShowUnoverlapped.Size = new System.Drawing.Size(153, 17);
+            this.checkBoxShowUnoverlapped.TabIndex = 8;
+            this.checkBoxShowUnoverlapped.Text = "Показать неперекрытые";
+            this.checkBoxShowUnoverlapped.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // checkBox5
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox4.Location = new System.Drawing.Point(336, 56);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(122, 17);
-            this.checkBox4.TabIndex = 8;
-            this.checkBox4.Text = "Выпуски во внутрь";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox5.Enabled = false;
+            this.checkBox5.Location = new System.Drawing.Point(1270, 307);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(137, 46);
+            this.checkBox5.TabIndex = 9;
+            this.checkBox5.Text = "Удалить ранее созданую арматуру";
+            this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // ReinforcementSquareColumnsView
             // 
@@ -926,8 +970,9 @@ namespace StructuralStrengthening
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1419, 560);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox5);
+            this.Controls.Add(this.checkBoxShowUnoverlapped);
+            this.Controls.Add(this.checkBoxRebarSolidInView);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.butReinforceColumns);
@@ -1019,8 +1064,8 @@ namespace StructuralStrengthening
         private System.Windows.Forms.Label lblRebarCoverTypes;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.TextBox textBoxLengthLowerTransverseReinforcement;
-        private System.Windows.Forms.TextBox textBoxLengthMiddleTransverseReinforcement;
+        private System.Windows.Forms.TextBox textBoxCountLowerTransverseReinforcement;
+        private System.Windows.Forms.TextBox textBoxCountMiddleTransverseReinforcement;
         private System.Windows.Forms.TextBox textBoxStepMiddleTransverseReinforcement;
         private System.Windows.Forms.TextBox textBoxFirstStirrupOffset;
         private System.Windows.Forms.TextBox textBoxStepLowerTransverseReinforcement;
@@ -1029,9 +1074,12 @@ namespace StructuralStrengthening
         private System.Windows.Forms.TextBox textBoxRebarOutletsLength;
         private System.Windows.Forms.Button butReinforceColumns;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBoxIsOutletsInside;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBoxRebarSolidInView;
+        private System.Windows.Forms.CheckBox checkBoxShowUnoverlapped;
+        private System.Windows.Forms.TextBox textBoxAdditionalOffsetBendBar;
+        private System.Windows.Forms.TextBox textBoxBottomOffsetMainBars;
+        private System.Windows.Forms.CheckBox checkBox5;
     }
 }
