@@ -51,12 +51,12 @@ namespace StructuralStrengthening
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType1_SizeAndStep;
 
             //groupParamTypeReinforcement Location
-            this.comboBoxBasicStirrupBarTapes.Location = new System.Drawing.Point(355, 228);
+            this.comboBoxBasicClampBarTapes.Location = new System.Drawing.Point(355, 228);
             this.lblRebarCoverTypes.Location = new System.Drawing.Point(108, 282);
             this.comboBoxFirstMainBarTapes.Location = new System.Drawing.Point(25, 65);
 
             //groupParamTypeReinforcement Remove
-            this.groupParamTypeReinforcement.Controls.Remove(this.comboBoxSecondStirrupBarTapes);
+            this.groupParamTypeReinforcement.Controls.Remove(this.comboBoxSecondClampBarTapes);
             this.groupParamTypeReinforcement.Controls.Remove(this.comboBoxSecondMainBarTapes);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterLeftRebarOffset_1);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterTopRebarOffset_2);
@@ -67,7 +67,7 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_1);
 
-
+            /*
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
             this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
@@ -77,6 +77,7 @@ namespace StructuralStrengthening
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(62, 324);
             this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(59, 191);
             this.textBoxOverlapThickness.Location = new System.Drawing.Point(18, 136);
+            */
         }
         private void radioButReinforcementType2_Click(object sender, EventArgs e)
         {
@@ -88,13 +89,13 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondMainBarTapes);
 
             //groupParamTypeReinforcement Location
-            this.comboBoxBasicStirrupBarTapes.Location = new System.Drawing.Point(370, 112);
+            this.comboBoxBasicClampBarTapes.Location = new System.Drawing.Point(370, 112);
             this.comboBoxSecondMainBarTapes.Location = new System.Drawing.Point(369, 277);
             this.lblRebarCoverTypes.Location = new System.Drawing.Point(108, 282);
             this.comboBoxFirstMainBarTapes.Location = new System.Drawing.Point(15, 35);
 
             //groupParamTypeReinforcement Remove
-            this.groupParamTypeReinforcement.Controls.Remove(this.comboBoxSecondStirrupBarTapes);
+            this.groupParamTypeReinforcement.Controls.Remove(this.comboBoxSecondClampBarTapes);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterLeftRebarOffset_1);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterTopRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterTopRebarOffset_1);
@@ -104,7 +105,7 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_1);
 
-
+            /*
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
             this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
@@ -114,6 +115,7 @@ namespace StructuralStrengthening
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(62, 324);
             this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(59, 191);
             this.textBoxOverlapThickness.Location = new System.Drawing.Point(18, 136);
+            */
         }
         private void radioButReinforcementType3_Click(object sender, EventArgs e)
         {
@@ -123,12 +125,12 @@ namespace StructuralStrengthening
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType3_SizeAndStep;
 
             //groupParamTypeReinforcement Add
-            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondStirrupBarTapes);
+            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondMainBarTapes);
 
             //groupParamTypeReinforcement Location
-            this.comboBoxBasicStirrupBarTapes.Location = new System.Drawing.Point(370, 52);
-            this.comboBoxSecondStirrupBarTapes.Location = new System.Drawing.Point(370, 131);
+            this.comboBoxBasicClampBarTapes.Location = new System.Drawing.Point(370, 52);
+            this.comboBoxSecondClampBarTapes.Location = new System.Drawing.Point(370, 131);
             this.comboBoxSecondMainBarTapes.Location = new System.Drawing.Point(370, 292);
             this.lblRebarCoverTypes.Location = new System.Drawing.Point(97, 280);
             this.comboBoxFirstMainBarTapes.Location = new System.Drawing.Point(18, 53);
@@ -143,6 +145,7 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_1);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_2);
 
+            /*
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
             this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
@@ -152,6 +155,7 @@ namespace StructuralStrengthening
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(62, 324);
             this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(59, 191);
             this.textBoxOverlapThickness.Location = new System.Drawing.Point(18, 136);
+            */
         }
         private void radioButReinforcementType4_Click(object sender, EventArgs e)
         {
@@ -161,7 +165,7 @@ namespace StructuralStrengthening
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType4_SizeAndStep;
 
             //groupParamTypeReinforcement Add
-            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondStirrupBarTapes);
+            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondMainBarTapes);
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterTopRebarOffset_1);
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLowerRebarOffset_1);
@@ -169,8 +173,8 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterRightRebarOffset_1);
 
             //groupParamTypeReinforcement Location 
-            this.comboBoxBasicStirrupBarTapes.Location = new System.Drawing.Point(370, 25);
-            this.comboBoxSecondStirrupBarTapes.Location = new System.Drawing.Point(370, 104);
+            this.comboBoxBasicClampBarTapes.Location = new System.Drawing.Point(370, 25);
+            this.comboBoxSecondClampBarTapes.Location = new System.Drawing.Point(370, 104);
             this.comboBoxSecondMainBarTapes.Location = new System.Drawing.Point(370, 264);
             this.textBoxSecondСenterRightRebarOffset_1.Location = new System.Drawing.Point(260, 303);
             this.textBoxSecondСenterLeftRebarOffset_1.Location = new System.Drawing.Point(187, 303);
@@ -185,7 +189,7 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterLeftRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_2);
 
-
+            /*
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
             this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(242, 321);
@@ -195,6 +199,7 @@ namespace StructuralStrengthening
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(56, 323);
             this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(56, 191);
             this.textBoxOverlapThickness.Location = new System.Drawing.Point(19, 137);
+            */
         }
         private void radioButReinforcementType5_Click(object sender, EventArgs e)
         {
@@ -204,7 +209,7 @@ namespace StructuralStrengthening
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType5_SizeAndStep;
 
             //groupParamTypeReinforcement Add
-            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondStirrupBarTapes);
+            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondMainBarTapes);
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterTopRebarOffset_1);
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLowerRebarOffset_1);
@@ -212,8 +217,8 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterRightRebarOffset_1);
 
             //groupParamTypeReinforcement Location 
-            this.comboBoxBasicStirrupBarTapes.Location = new System.Drawing.Point(370, 25);
-            this.comboBoxSecondStirrupBarTapes.Location = new System.Drawing.Point(370, 103);
+            this.comboBoxBasicClampBarTapes.Location = new System.Drawing.Point(370, 25);
+            this.comboBoxSecondClampBarTapes.Location = new System.Drawing.Point(370, 103);
             this.comboBoxSecondMainBarTapes.Location = new System.Drawing.Point(370, 263);
             this.textBoxSecondСenterRightRebarOffset_1.Location = new System.Drawing.Point(265, 303);
             this.textBoxSecondСenterLeftRebarOffset_1.Location = new System.Drawing.Point(183, 303);
@@ -228,7 +233,7 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterLeftRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_2);
 
-
+            /*
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(249, 83);
             this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(248, 321);
@@ -238,6 +243,7 @@ namespace StructuralStrengthening
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(48, 323);
             this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(45, 190);
             this.textBoxOverlapThickness.Location = new System.Drawing.Point(15, 136);
+            */
         }
         private void radioButReinforcementType6_Click(object sender, EventArgs e)
         {
@@ -247,7 +253,7 @@ namespace StructuralStrengthening
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType6_SizeAndStep;
 
             //groupParamTypeReinforcement Add
-            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondStirrupBarTapes);
+            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondMainBarTapes);
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLeftRebarOffset_1);
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterTopRebarOffset_2);
@@ -259,8 +265,8 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterRightRebarOffset_1);
 
             //groupParamTypeReinforcement Location
-            this.comboBoxBasicStirrupBarTapes.Location = new System.Drawing.Point(375, 16);
-            this.comboBoxSecondStirrupBarTapes.Location = new System.Drawing.Point(377, 110);
+            this.comboBoxBasicClampBarTapes.Location = new System.Drawing.Point(375, 16);
+            this.comboBoxSecondClampBarTapes.Location = new System.Drawing.Point(377, 110);
             this.comboBoxSecondMainBarTapes.Location = new System.Drawing.Point(375, 269);
             this.textBoxSecondСenterRightRebarOffset_2.Location = new System.Drawing.Point(317, 306);
             this.textBoxSecondСenterRightRebarOffset_1.Location = new System.Drawing.Point(256, 310);
@@ -273,7 +279,7 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterTopRebarOffset_2.Location = new System.Drawing.Point(37, 104);
             this.comboBoxFirstMainBarTapes.Location = new System.Drawing.Point(5, 14);
 
-
+            /*
             // groupParamSizeStepReinforcement Location
             this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(249, 83);
             this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(248, 321);
@@ -283,6 +289,7 @@ namespace StructuralStrengthening
             this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(48, 323);
             this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(45, 190);
             this.textBoxOverlapThickness.Location = new System.Drawing.Point(15, 136);
+            */
         }
 
         #endregion
@@ -300,10 +307,10 @@ namespace StructuralStrengthening
             {
                 this.comboBoxFirstMainBarTapes.Items.Add(rebarType);
                 this.comboBoxFirstMainBarTapes.DisplayMember = "Name";
-                this.comboBoxBasicStirrupBarTapes.Items.Add(rebarType);
-                this.comboBoxBasicStirrupBarTapes.DisplayMember = "Name";
-                this.comboBoxSecondStirrupBarTapes.Items.Add(rebarType);
-                this.comboBoxSecondStirrupBarTapes.DisplayMember = "Name";
+                this.comboBoxBasicClampBarTapes.Items.Add(rebarType);
+                this.comboBoxBasicClampBarTapes.DisplayMember = "Name";
+                this.comboBoxSecondClampBarTapes.Items.Add(rebarType);
+                this.comboBoxSecondClampBarTapes.DisplayMember = "Name";
                 this.comboBoxSecondMainBarTapes.Items.Add(rebarType);
                 this.comboBoxSecondMainBarTapes.DisplayMember = "Name";
             }
@@ -462,6 +469,18 @@ namespace StructuralStrengthening
         }
 
         /// <summary>
+        /// Активный выбранный типоразмер основных хомутов
+        /// </summary>
+        /// <returns>
+        /// Типоразмер, выбранной пользователем, основных хомутов
+        /// </returns>
+        /// <exception cref= "System.NullReferenceException">: Ссылка на объект не указывает на экземпляр объекта.</exception>
+        public RebarBarType GetBasicClampBarTapes()
+        {
+            return (RebarBarType)this.comboBoxBasicClampBarTapes.SelectedItem;
+        }
+
+        /// <summary>
         /// Получить тип выбранного армирования
         /// </summary>
         /// <returns>
@@ -610,7 +629,7 @@ namespace StructuralStrengthening
         /// Обращение к textBox, где вводится значения отступа второго правого центрально-нижнего стержня
         /// </summary>
         /// <returns>
-        /// Отступ второго центрально-нижнего стержня, указанный пользователем
+        /// Отступ второго центрально-нижнего стержня, указанный пользователем в мм.
         /// </returns>
         public double GetValueOffsetSecondСenterLowerRebar_2()
         {
@@ -629,10 +648,85 @@ namespace StructuralStrengthening
         }
 
         /// <summary>
+        /// Обращение к textBox, где вводится значения отступа снизу от начало колонны для хомутов
+        /// </summary>
+        /// <returns>
+        /// Отступ снизу от начало колонны для хомутов в мм.
+        /// </returns>
+        public double GetValueBoxBottomOffsetBasicClamp()
+        {
+            return Convert.ToDouble(this.textBoxBottomOffsetBasicClamp.Text);
+        }
+
+        /// <summary>
+        /// Обращение к textBox, где вводится значение количества хомутов снизу
+        /// </summary>
+        /// <returns>
+        /// Количество хомутов  - 1
+        /// </returns>
+        public int GetValueCountLowerClamp()
+        {
+            return Convert.ToInt32(this.textBoxCountLowerClamps.Text);
+        }
+        /// <summary>
+        /// Обращение к textBox, где вводится значения шага хомутов снизу
+        /// </summary>
+        /// <returns>
+        /// Шаг хомутов снизу в мм.
+        /// </returns>
+        public double GetValueStepLowerClamp()
+        {
+            return Convert.ToDouble(this.textBoxStepLowerClamps.Text);
+        }
+
+        /// <summary>
+        /// Обращение к textBox, где вводится значение количества хомутов посередине
+        /// </summary>
+        /// <returns>
+        /// Количество хомутов
+        /// </returns>
+        public int GetValueCountMiddleClamp()
+        {
+            return Convert.ToInt32(this.textBoxCountMiddleClamps.Text);
+        }
+        /// <summary>
+        /// Обращение к textBox, где вводится значения шага хомутов посередине
+        /// </summary>
+        /// <returns>
+        /// Шаг хомутов снизу в мм.
+        /// </returns>
+        public double GetValueStepMiddleClamp()
+        {
+            return Convert.ToDouble(this.textBoxStepMiddleClamps.Text);
+        }
+
+
+        /// <summary>
+        /// Обращение к textBox, где вводится значение количества хомутов сверху
+        /// </summary>
+        /// <returns>
+        /// Количество хомутов
+        /// </returns>
+        public int GetValueCountTopClamp()
+        {
+            return Convert.ToInt32(this.textBoxCountTopClamps.Text);
+        }
+        /// <summary>
+        /// Обращение к textBox, где вводится значения шага хомутов сверху
+        /// </summary>
+        /// <returns>
+        /// Шаг хомутов снизу в мм.
+        /// </returns>
+        public double GetValueStepTopClamp()
+        {
+            return Convert.ToDouble(this.textBoxStepTopClamps.Text);
+        }
+
+        /// <summary>
         /// Обращение к textBox, где вводится значения дополнительного смещения изгиба стержня
         /// </summary>
         /// <returns>
-        /// Дополнительное спещение загиба стержня
+        /// Дополнительное спещение загиба стержня в мм.
         /// </returns>
         public double GetValueAdditionalOffsetBendBar()
         {

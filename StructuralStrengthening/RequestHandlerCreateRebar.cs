@@ -32,9 +32,14 @@ namespace ReinforcementSquareColumns.RequestHandler
         private double _rebarOutletsLength;
 
         /// <summary>
-        /// Отступы начало построение продольной арматуры снизу от колонны
+        /// Отступ начало построения продольной арматуры снизу от колонны
         /// </summary>
         private double _bottomOffsetCrossBars;
+
+        /// <summary>
+        /// Отступ начало построения хомутов снизу колонны
+        /// </summary>
+        private double _bottomOffsetBasicClamp;
 
         /// <summary>
         /// Дополнительное смещение выпуска гнутой арматуры
@@ -50,6 +55,17 @@ namespace ReinforcementSquareColumns.RequestHandler
         /// Форма гнутой арматуры 
         /// </summary>
         RebarShape rebarCurvedShape;
+
+        /// <summary>
+        /// Форма гнутой арматуры 
+        /// </summary>
+        RebarShape rebarClamp;
+
+        /// <summary>
+        /// Отгибы арматуры
+        /// </summary>
+        RebarHookType rebarHookType;
+
         public void TransferGeneralData(Document doc, List<Element> elements)
         {
             this._selectedElements = elements;
@@ -57,6 +73,9 @@ namespace ReinforcementSquareColumns.RequestHandler
 
         }
 
+        /// <summary>
+        ///Передача данных с пользовательской формы
+        /// </summary>
         public void TransferForm(ReinforcementSquareColumnsView view)
         {
             this._view = view;
@@ -69,17 +88,22 @@ namespace ReinforcementSquareColumns.RequestHandler
             this._bottomOffsetCrossBars = (_view.GetValueBoxBottomOffsetMainBars() / 304.8);
             this._additionalOffsetBendBar = (_view.GetValueAdditionalOffsetBendBar() / 304.8);
 
-            rebarSmoothShape = GetRebarShape("О_1");
-            rebarCurvedShape = GetRebarShape("О_26(α»90)");
+            this._bottomOffsetBasicClamp = (_view.GetValueBoxBottomOffsetBasicClamp() / 304.8);
+
+            rebarSmoothShape = _getRebarShape("О_1");
+            rebarCurvedShape = _getRebarShape("О_26(α»90)");
+            rebarClamp = _getRebarShape("Х_51");
+
+            rebarHookType = _getRebarHookType("Хомут/стяжка_135°");
         }
 
 
         public void Execute(UIApplication app)
         {
-            using (Transaction firstTrans = new Transaction(doc))
+            using (Transaction t = new Transaction(doc))
             {
 
-                firstTrans.Start("Армирование квадратной колонны");
+                t.Start("Армирование квадратной колонны");
                 int totalMessage = 0; // Чтобы сообщения не повторялись по нескольку раз во время работы цикла
 
                 foreach (Element element in _selectedElements)
@@ -126,7 +150,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                     double diameterFirstMainRebar = firstMainBarTapes.get_Parameter(BuiltInParameter.REBAR_BAR_DIAMETER).AsDouble();
                     #endregion
 
-
+                    
                     List<Rebar> rebars = new List<Rebar>();
                     #region Прямые выпуски
                     if (this._activeRebarOutletTypes == "radioButMainWeldingRods")
@@ -142,7 +166,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                         List<Curve> linesRebar = new List<Curve>() { lineRebar };
 
                         // Нижний Левый угол
-                        Rebar rebarLowerLeft = _creatureLongitudinalRebar(doc, rebarSmoothShape, firstMainBarTapes, element, linesRebar);
+                        Rebar rebarLowerLeft = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, firstMainBarTapes, element, linesRebar);
                         XYZ pointLowerLeft = new XYZ(
                             -0.5 * columnWidth + rebarCorver + 0.5 * diameterFirstMainRebar,
                             -0.5 * columnHeight + rebarCorver + 0.5 * diameterFirstMainRebar,
@@ -151,7 +175,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                         rebars.Add(rebarLowerLeft);
 
                         // Нижний Правый угол
-                        Rebar rebarLowerRight = _creatureLongitudinalRebar(doc, rebarSmoothShape, firstMainBarTapes, element, linesRebar);
+                        Rebar rebarLowerRight = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, firstMainBarTapes, element, linesRebar);
                         XYZ pointLowerRight = new XYZ(
                              0.5 * columnWidth - rebarCorver - 0.5 * diameterFirstMainRebar,
                              -0.5 * columnHeight + rebarCorver + 0.5 * diameterFirstMainRebar,
@@ -160,7 +184,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                         rebars.Add(rebarLowerRight);
 
                         // Верхний Левый угол
-                        Rebar rebarTopLeft = _creatureLongitudinalRebar(doc, rebarSmoothShape, firstMainBarTapes, element, linesRebar);
+                        Rebar rebarTopLeft = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, firstMainBarTapes, element, linesRebar);
                         XYZ pointTopLeft = new XYZ(
                             -0.5 * columnWidth + rebarCorver + 0.5 * diameterFirstMainRebar,
                             0.5 * columnHeight - rebarCorver - 0.5 * diameterFirstMainRebar,
@@ -169,7 +193,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                         rebars.Add(rebarTopLeft);
 
                         // Верхний Правый угол
-                        Rebar rebarTopRight = _creatureLongitudinalRebar(doc, rebarSmoothShape, firstMainBarTapes, element, linesRebar);
+                        Rebar rebarTopRight = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, firstMainBarTapes, element, linesRebar);
                         XYZ pointTopRight = new XYZ(
                            0.5 * columnWidth - rebarCorver - 0.5 * diameterFirstMainRebar,
                            0.5 * columnHeight - rebarCorver - 0.5 * diameterFirstMainRebar,
@@ -186,25 +210,25 @@ namespace ReinforcementSquareColumns.RequestHandler
                             double diameterSecondMainRebar = secondMainBarTapes.get_Parameter(BuiltInParameter.REBAR_BAR_DIAMETER).AsDouble();
 
                             // Нижний Центральный стержень
-                            Rebar rebarLowerСenter = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarLowerСenter = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointLowerСenter = new XYZ(0, -0.5 * columnHeight + rebarCorver + 0.5 * diameterSecondMainRebar, 0);
                             ElementTransformUtils.MoveElement(doc, rebarLowerСenter.Id, pointLowerСenter);
                             rebars.Add(rebarLowerСenter);
 
                             // Верхний Центральный стержень
-                            Rebar rebarTopСenter = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarTopСenter = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointTopСenter = new XYZ(0, +0.5 * columnHeight - rebarCorver - 0.5 * diameterSecondMainRebar, 0);
                             ElementTransformUtils.MoveElement(doc, rebarTopСenter.Id, pointTopСenter);
                             rebars.Add(rebarTopСenter);
 
                             // Левый Центральный стержень
-                            Rebar rebarLeftСenter = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarLeftСenter = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointLeftСenter = new XYZ(-0.5 * columnWidth + rebarCorver + 0.5 * diameterSecondMainRebar, 0, 0);
                             ElementTransformUtils.MoveElement(doc, rebarLeftСenter.Id, pointLeftСenter);
                             rebars.Add(rebarLeftСenter);
 
                             // Правый Центральный стержень
-                            Rebar rebarRightСenter = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarRightСenter = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointRightСenter = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterSecondMainRebar, 0, 0);
                             ElementTransformUtils.MoveElement(doc, rebarRightСenter.Id, pointRightСenter);
                             rebars.Add(rebarRightСenter);
@@ -224,49 +248,49 @@ namespace ReinforcementSquareColumns.RequestHandler
 
 
                             // Нижний Центрально-Левый стержень 1
-                            Rebar rebarLowerСenterLeft_1 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarLowerСenterLeft_1 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointLowerСenterLeft_1 = new XYZ(-offsetSecondСenterLeftRebar_1,
                                 -0.5 * columnHeight + rebarCorver + 0.5 * diameterSecondMaiRebar, 0);
                             ElementTransformUtils.MoveElement(doc, rebarLowerСenterLeft_1.Id, pointLowerСenterLeft_1);
                             rebars.Add(rebarLowerСenterLeft_1);
 
                             // Нижний Центрально-Правый стержень 1
-                            Rebar rebarLowerСenterRight_1 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarLowerСenterRight_1 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointLowerСenterRight_1 = new XYZ(offsetSecondСenterRightRebar_1,
                                 -0.5 * columnHeight + rebarCorver + 0.5 * diameterSecondMaiRebar, 0);
                             ElementTransformUtils.MoveElement(doc, rebarLowerСenterRight_1.Id, pointLowerСenterRight_1);
                             rebars.Add(rebarLowerСenterRight_1);
 
                             // Верхний Центрально-Левый стержень 1
-                            Rebar rebarTopСenterLeft_1 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarTopСenterLeft_1 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointTopСenterLeft_1 = new XYZ(-offsetSecondСenterLeftRebar_1,
                                 0.5 * columnHeight - rebarCorver - 0.5 * diameterSecondMaiRebar, 0);
                             ElementTransformUtils.MoveElement(doc, rebarTopСenterLeft_1.Id, pointTopСenterLeft_1);
                             rebars.Add(rebarTopСenterLeft_1);
 
                             // Верхний Центрально-Правый стержень 1
-                            Rebar rebarTopСenterRight_1 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarTopСenterRight_1 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointTopСenterRight_1 = new XYZ(offsetSecondСenterRightRebar_1,
                                 0.5 * columnHeight - rebarCorver - 0.5 * diameterSecondMaiRebar, 0);
                             ElementTransformUtils.MoveElement(doc, rebarTopСenterRight_1.Id, pointTopСenterRight_1);
                             rebars.Add(rebarTopСenterRight_1);
 
                             // Левый Центрально-Верхний стержень 1
-                            Rebar rebarLeftСenterTop_1 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarLeftСenterTop_1 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointLeftСenterTop_1 = new XYZ(-0.5 * columnWidth + rebarCorver + 0.5 * diameterSecondMaiRebar,
                                 offsetSecondСenterTopRebar_1, 0);
                             ElementTransformUtils.MoveElement(doc, rebarLeftСenterTop_1.Id, pointLeftСenterTop_1);
                             rebars.Add(rebarLeftСenterTop_1);
 
                             // Левый Центрально-Нижний стержень 1
-                            Rebar rebarLeftСenterLower_1 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarLeftСenterLower_1 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointLeftСenterLower_1 = new XYZ(-0.5 * columnWidth + rebarCorver + 0.5 * diameterSecondMaiRebar,
                                 -offsetSecondСenterLowerRebar_1, 0);
                             ElementTransformUtils.MoveElement(doc, rebarLeftСenterLower_1.Id, pointLeftСenterLower_1);
                             rebars.Add(rebarLeftСenterLower_1);
 
                             // Правый Центрально-Верхний стержень 1
-                            Rebar rebarRightСenterTop_1 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarRightСenterTop_1 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointRightСenterTop_1 = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterSecondMaiRebar,
                                 offsetSecondСenterTopRebar_1, 0);
                             ElementTransformUtils.MoveElement(doc, rebarRightСenterTop_1.Id, pointRightСenterTop_1);
@@ -274,7 +298,7 @@ namespace ReinforcementSquareColumns.RequestHandler
 
 
                             // Правый Центрально-Нижний стержень 1
-                            Rebar rebarRightСenterLower_1 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                            Rebar rebarRightСenterLower_1 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                             XYZ pointRightСenterLower_1 = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterSecondMaiRebar,
                                 -offsetSecondСenterLowerRebar_1, 0);
                             ElementTransformUtils.MoveElement(doc, rebarRightСenterLower_1.Id, pointRightСenterLower_1);
@@ -287,56 +311,56 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 double offsetSecondСenterLowerRebar_2 = _view.GetValueOffsetSecondСenterLowerRebar_2() / 304.8;
 
                                 // Нижний Центрально-Левый стержень 2
-                                Rebar rebarLowerСenterLeft_2 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                                Rebar rebarLowerСenterLeft_2 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                                 XYZ pointLowerСenterLeft_2 = new XYZ(-offsetSecondСenterLeftRebar_1 - offsetSecondСenterLeftRebar_2,
                                     -0.5 * columnHeight + rebarCorver + 0.5 * diameterSecondMaiRebar, 0);
                                 ElementTransformUtils.MoveElement(doc, rebarLowerСenterLeft_2.Id, pointLowerСenterLeft_2);
                                 rebars.Add(rebarLowerСenterLeft_2);
 
                                 // Нижний Центрально-Правый стержень 2
-                                Rebar rebarLowerСenterRight_2 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                                Rebar rebarLowerСenterRight_2 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                                 XYZ pointLowerСenterRight_2 = new XYZ(offsetSecondСenterRightRebar_1 + offsetSecondСenterRightRebar_2,
                                     -0.5 * columnHeight + rebarCorver + 0.5 * diameterSecondMaiRebar, 0);
                                 ElementTransformUtils.MoveElement(doc, rebarLowerСenterRight_2.Id, pointLowerСenterRight_2);
                                 rebars.Add(rebarLowerСenterRight_2);
 
                                 // Верхний Центрально-Левый стержень 2
-                                Rebar rebarTopСenterLeft_2 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                                Rebar rebarTopСenterLeft_2 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                                 XYZ pointTopСenterLeft_2 = new XYZ(-offsetSecondСenterLeftRebar_1 - offsetSecondСenterLeftRebar_2,
                                     0.5 * columnHeight - rebarCorver - 0.5 * diameterSecondMaiRebar, 0);
                                 ElementTransformUtils.MoveElement(doc, rebarTopСenterLeft_2.Id, pointTopСenterLeft_2);
                                 rebars.Add(rebarTopСenterLeft_2);
 
                                 // Верхний Центрально-Правый стержень 2
-                                Rebar rebarTopСenterRight_2 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                                Rebar rebarTopСenterRight_2 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                                 XYZ pointTopСenterRight_2 = new XYZ(offsetSecondСenterRightRebar_1 + offsetSecondСenterRightRebar_2,
                                     0.5 * columnHeight - rebarCorver - 0.5 * diameterSecondMaiRebar, 0);
                                 ElementTransformUtils.MoveElement(doc, rebarTopСenterRight_2.Id, pointTopСenterRight_2);
                                 rebars.Add(rebarTopСenterRight_2);
 
                                 // Левый Центрально-Верхний стержень 2
-                                Rebar rebarLeftСenterTop_2 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                                Rebar rebarLeftСenterTop_2 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                                 XYZ pointLeftСenterTop_2 = new XYZ(-0.5 * columnWidth + rebarCorver + 0.5 * diameterSecondMaiRebar,
                                     offsetSecondСenterTopRebar_1 + offsetSecondСenterTopRebar_2, 0);
                                 ElementTransformUtils.MoveElement(doc, rebarLeftСenterTop_2.Id, pointLeftСenterTop_2);
                                 rebars.Add(rebarLeftСenterTop_2);
 
                                 // Левый Центрально-Нижний стержень 2
-                                Rebar rebarLeftСenterLower_2 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                                Rebar rebarLeftСenterLower_2 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                                 XYZ pointLeftСenterLower_2 = new XYZ(-0.5 * columnWidth + rebarCorver + 0.5 * diameterSecondMaiRebar,
                                     -offsetSecondСenterLowerRebar_1 - offsetSecondСenterLowerRebar_2, 0);
                                 ElementTransformUtils.MoveElement(doc, rebarLeftСenterLower_2.Id, pointLeftСenterLower_2);
                                 rebars.Add(rebarLeftСenterLower_2);
 
                                 // Правый Центрально-Верхний стержень 2
-                                Rebar rebarRightСenterTop_2 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                                Rebar rebarRightСenterTop_2 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                                 XYZ pointRightСenterTop_2 = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterSecondMaiRebar,
                                     offsetSecondСenterTopRebar_1 + offsetSecondСenterTopRebar_2, 0);
                                 ElementTransformUtils.MoveElement(doc, rebarRightСenterTop_2.Id, pointRightСenterTop_2);
                                 rebars.Add(rebarRightСenterTop_2);
 
                                 // Правый Центрально-Нижний стержень 1
-                                Rebar rebarRightСenterLower_2 = _creatureLongitudinalRebar(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
+                                Rebar rebarRightСenterLower_2 = _creatureRebarFromCurvesAndShape(doc, rebarSmoothShape, secondMainBarTapes, element, linesRebar);
                                 XYZ pointRightСenterLower_2 = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterSecondMaiRebar,
                                     -offsetSecondСenterLowerRebar_1 - offsetSecondСenterLowerRebar_2, 0);
                                 ElementTransformUtils.MoveElement(doc, rebarRightСenterLower_2.Id, pointRightСenterLower_2);
@@ -383,7 +407,7 @@ namespace ReinforcementSquareColumns.RequestHandler
 
 
                         // Нижний левый угол
-                        Rebar rebarLowerLeft = _creatureLongitudinalRebar(doc, rebarCurvedShape, firstMainBarTapes, element, linesFirstRebar);
+                        Rebar rebarLowerLeft = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, firstMainBarTapes, element, linesFirstRebar);
                         XYZ pointLowerLeft = new XYZ(-0.5 * columnWidth + rebarCorver + 0.5 * diameterFirstMainRebar,
                             -0.5 * columnHeight + rebarCorver + 0.5 * diameterFirstMainRebar,
                             0);
@@ -396,7 +420,7 @@ namespace ReinforcementSquareColumns.RequestHandler
 
 
                         // Верхний левый угол
-                        Rebar rebarTopLeft = _creatureLongitudinalRebar(doc, rebarCurvedShape, firstMainBarTapes, element, linesFirstRebar);
+                        Rebar rebarTopLeft = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, firstMainBarTapes, element, linesFirstRebar);
                         XYZ pointTopLeft = new XYZ(-0.5 * columnWidth + rebarCorver + 0.5 * diameterFirstMainRebar,
                             0.5 * columnHeight - rebarCorver - 0.5 * diameterFirstMainRebar,
                             0);
@@ -408,7 +432,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                         rebars.Add(rebarTopLeft);
 
                         // Нижний правый угол
-                        Rebar rebarLowerRight = _creatureLongitudinalRebar(doc, rebarCurvedShape, firstMainBarTapes, element, linesFirstRebar);
+                        Rebar rebarLowerRight = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, firstMainBarTapes, element, linesFirstRebar);
                         XYZ pointLowerRight = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterFirstMainRebar,
                             -0.5 * columnHeight + rebarCorver + 0.5 * diameterFirstMainRebar,
                             0);
@@ -424,7 +448,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                         rebars.Add(rebarLowerRight);
 
                         // Верхний правый угол
-                        Rebar rebarTopRight = _creatureLongitudinalRebar(doc, rebarCurvedShape, firstMainBarTapes, element, linesFirstRebar);
+                        Rebar rebarTopRight = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, firstMainBarTapes, element, linesFirstRebar);
                         XYZ pointTopRight = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterFirstMainRebar,
                             0.5 * columnHeight - rebarCorver - 0.5 * diameterFirstMainRebar,
                             0);
@@ -465,7 +489,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 this._activeReinforcementType == "radioButRebarType5")
                             {
                                 // Нижний Центральный стержень
-                                Rebar rebarLowerСenter = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarLowerСenter = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointLowerСenter = new XYZ(0, -0.5 * columnHeight + rebarCorver + 0.5 * diameterSecondMainRebar, 0);
                                 if (isOutletsInside)
                                 {
@@ -475,7 +499,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 rebars.Add(rebarLowerСenter);
 
                                 // Верхний Центральный стержень
-                                Rebar rebarTopСenter = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarTopСenter = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointTopСenter = new XYZ(0, +0.5 * columnHeight - rebarCorver - 0.5 * diameterSecondMainRebar, 0);
                                 if (isOutletsInside)
                                 {
@@ -485,7 +509,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 rebars.Add(rebarTopСenter);
 
                                 // Левый Центральный стержень
-                                Rebar rebarLeftСenter = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarLeftСenter = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointLeftСenter = new XYZ(-0.5 * columnWidth + rebarCorver + 0.5 * diameterSecondMainRebar, 0, 0);
                                 if (!isOutletsInside)
                                 {
@@ -495,7 +519,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 rebars.Add(rebarLeftСenter);
 
                                 // Правый Центральный стержень
-                                Rebar rebarRightСenter = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarRightСenter = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointRightСenter = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterSecondMainRebar, 0, 0);
                                 if (!isOutletsInside)
                                 {
@@ -521,7 +545,7 @@ namespace ReinforcementSquareColumns.RequestHandler
 
 
                                 // Нижний Центрально-Левый стержень 1
-                                Rebar rebarLowerСenterLeft_1 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarLowerСenterLeft_1 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointLowerСenterLeft_1 = new XYZ(
                                     -offsetSecondСenterLeftRebar_1,
                                     -0.5 * columnHeight + rebarCorver + 0.5 * diameterSecondMainRebar,
@@ -534,7 +558,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 rebars.Add(rebarLowerСenterLeft_1);
 
                                 // Нижний Центрально-Правый стержень 1
-                                Rebar rebarLowerСenterRight_1 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarLowerСenterRight_1 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointLowerСenterRight_1 = new XYZ(
                                     offsetSecondСenterRightRebar_1,
                                     -0.5 * columnHeight + rebarCorver + 0.5 * diameterSecondMainRebar,
@@ -551,7 +575,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 rebars.Add(rebarLowerСenterRight_1);
 
                                 // Верхний Центрально-Левый стержень 1
-                                Rebar rebarTopСenterLeft_1 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarTopСenterLeft_1 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointTopСenterLeft_1 = new XYZ(-offsetSecondСenterLeftRebar_1,
                                         0.5 * columnHeight - rebarCorver - 0.5 * diameterSecondMainRebar, 0);
                                 if (isOutletsInside)
@@ -562,7 +586,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 rebars.Add(rebarTopСenterLeft_1);
 
                                 // Верхний Центрально-Правый стержень 1
-                                Rebar rebarTopСenterRight_1 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarTopСenterRight_1 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointTopСenterRight_1 = new XYZ(offsetSecondСenterRightRebar_1,
                                        0.5 * columnHeight - rebarCorver - 0.5 * diameterSecondMainRebar, 0);
                                 if (isOutletsInside)
@@ -578,7 +602,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 rebars.Add(rebarTopСenterRight_1);
 
                                 // Левый Центрально-Верхний стержень 1
-                                Rebar rebarLeftСenterTop_1 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarLeftСenterTop_1 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointLeftСenterTop_1 = new XYZ(-0.5 * columnWidth + rebarCorver + 0.5 * diameterSecondMainRebar,
                                         offsetSecondСenterTopRebar_1, 0);
                                 if (!isOutletsInside)
@@ -589,7 +613,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 rebars.Add(rebarLeftСenterTop_1);
 
                                 // Левый Центрально-Нижний стержень 1
-                                Rebar rebarLeftСenterLower_1 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarLeftСenterLower_1 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointLeftСenterLower_1 = new XYZ(-0.5 * columnWidth + rebarCorver + 0.5 * diameterSecondMainRebar,
                                         -offsetSecondСenterLowerRebar_1, 0);
                                 if (!isOutletsInside)
@@ -600,7 +624,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 rebars.Add(rebarLeftСenterLower_1);
 
                                 // Правый Центрально-Верхний стержень 1
-                                Rebar rebarRightСenterTop_1 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarRightСenterTop_1 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointRightСenterTop_1 = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterSecondMainRebar,
                                        offsetSecondСenterTopRebar_1, 0);
                                 if (isOutletsInside)
@@ -615,7 +639,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                 rebars.Add(rebarRightСenterTop_1);
 
                                 // Правый Центрально-Нижний стержень 1
-                                Rebar rebarRightСenterLower_1 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                Rebar rebarRightСenterLower_1 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                 XYZ pointRightСenterLower_1 = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterSecondMainRebar,
                                        -offsetSecondСenterLowerRebar_1, 0);
                                 if (isOutletsInside)
@@ -637,7 +661,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                     double offsetSecondСenterLowerRebar_2 = _view.GetValueOffsetSecondСenterLowerRebar_2() / 304.8;
 
                                     // Нижний Центрально-Левый стержень 2
-                                    Rebar rebarLowerСenterLeft_2 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                    Rebar rebarLowerСenterLeft_2 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                     XYZ pointLowerСenterLeft_2 = new XYZ(-offsetSecondСenterLeftRebar_1 - offsetSecondСenterLeftRebar_2,
                                             -0.5 * columnHeight + rebarCorver + 0.5 * diameterSecondMainRebar, 0);
                                     if (isOutletsInside)
@@ -648,7 +672,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                     rebars.Add(rebarLowerСenterLeft_2);
 
                                     // Нижний Центрально-Правый стержень 2
-                                    Rebar rebarLowerСenterRight_2 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                    Rebar rebarLowerСenterRight_2 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                     XYZ pointLowerСenterRight_2 = new XYZ(
                                         offsetSecondСenterRightRebar_1 + offsetSecondСenterRightRebar_2,
                                         -0.5 * columnHeight + rebarCorver + 0.5 * diameterSecondMainRebar, 0);
@@ -664,7 +688,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                     rebars.Add(rebarLowerСenterRight_2);
 
                                     // Верхний Центрально-Левый стержень 2
-                                    Rebar rebarTopСenterLeft_2 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                    Rebar rebarTopСenterLeft_2 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                     XYZ pointTopСenterLeft_2 = new XYZ(
                                         -offsetSecondСenterLeftRebar_1 - offsetSecondСenterLeftRebar_2,
                                         0.5 * columnHeight - rebarCorver - 0.5 * diameterSecondMainRebar, 0);
@@ -676,7 +700,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                     rebars.Add(rebarTopСenterLeft_2);
 
                                     // Верхний Центрально-Правый стержень 2
-                                    Rebar rebarTopСenterRight_2 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                    Rebar rebarTopСenterRight_2 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                     XYZ pointTopСenterRight_2 = new XYZ(
                                         offsetSecondСenterRightRebar_1 + offsetSecondСenterRightRebar_2,
                                             0.5 * columnHeight - rebarCorver - 0.5 * diameterSecondMainRebar, 0);
@@ -693,7 +717,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                     rebars.Add(rebarTopСenterRight_2);
 
                                     // Левый Центрально-Верхний стержень 2
-                                    Rebar rebarLeftСenterTop_2 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                    Rebar rebarLeftСenterTop_2 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                     XYZ pointLeftСenterTop_2 = new XYZ(
                                         -0.5 * columnWidth + rebarCorver + 0.5 * diameterSecondMainRebar,
                                             offsetSecondСenterTopRebar_1 + offsetSecondСenterTopRebar_2, 0);
@@ -705,7 +729,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                     rebars.Add(rebarLeftСenterTop_2);
 
                                     // Левый Центрально-Нижний стержень 2
-                                    Rebar rebarLeftСenterLower_2 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                    Rebar rebarLeftСenterLower_2 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                     XYZ pointLeftСenterLower_2 = new XYZ(
                                         -0.5 * columnWidth + rebarCorver + 0.5 * diameterSecondMainRebar,
                                             -offsetSecondСenterLowerRebar_1 - offsetSecondСenterLowerRebar_2, 0);
@@ -717,7 +741,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                     rebars.Add(rebarLeftСenterLower_2);
 
                                     // Правый Центрально-Верхний стержень 2
-                                    Rebar rebarRightСenterTop_2 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                    Rebar rebarRightСenterTop_2 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                     XYZ pointRightСenterTop_2 = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterSecondMainRebar,
                                            offsetSecondСenterTopRebar_1 + offsetSecondСenterTopRebar_2, 0);
                                     if (isOutletsInside)
@@ -732,7 +756,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                                     rebars.Add(rebarRightСenterTop_2);
 
                                     // Правый Центрально-Нижний стержень 2
-                                    Rebar rebarRightСenterLower_2 = _creatureLongitudinalRebar(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
+                                    Rebar rebarRightСenterLower_2 = _creatureRebarFromCurvesAndShape(doc, rebarCurvedShape, secondMainBarTapes, element, linesSecondRebar);
                                     XYZ pointRightСenterLower_2 = new XYZ(0.5 * columnWidth - rebarCorver - 0.5 * diameterSecondMainRebar,
                                             -offsetSecondСenterLowerRebar_1 - offsetSecondСenterLowerRebar_2, 0);
                                     if (isOutletsInside)
@@ -753,12 +777,99 @@ namespace ReinforcementSquareColumns.RequestHandler
 
                     #region Хомуты
 
+                    #region Основной хомут
+                    RebarBarType basicClampBarTapes = _view.GetBasicClampBarTapes();
+                    double diameterBasicClamp = basicClampBarTapes.get_Parameter(BuiltInParameter.REBAR_BAR_DIAMETER).AsDouble();
+
+                    // Нижний Левый угол
+                    XYZ basicClampPoint_1 = new XYZ(
+                        elementOrigin.X - 0.5 * columnWidth + rebarCorver - 0.5 * diameterBasicClamp,
+                        elementOrigin.Y - 0.5 * columnHeight + rebarCorver - 0.5 * diameterBasicClamp,
+                        elementOrigin.Z + _bottomOffsetBasicClamp
+                        );
+
+                    // Верхний Левый угол
+                    XYZ basicClampPoint_2 = new XYZ(
+                        elementOrigin.X - 0.5 * columnWidth + rebarCorver - 0.5 * diameterBasicClamp,
+                        elementOrigin.Y + 0.5 * columnHeight - rebarCorver + 0.5 * diameterBasicClamp,
+                        elementOrigin.Z + _bottomOffsetBasicClamp
+                        );
+
+                    // Верхний Правый угол
+                    XYZ basicClampPoint_3 = new XYZ(
+                        elementOrigin.X + 0.5 * columnWidth - rebarCorver + 0.5 * diameterBasicClamp,
+                        elementOrigin.Y + 0.5 * columnHeight - rebarCorver + 0.5 * diameterBasicClamp,
+                        elementOrigin.Z + _bottomOffsetBasicClamp
+                        );
+
+                    // Нижний Правый угол
+                    XYZ basicClampPoint_4 = new XYZ(
+                        elementOrigin.X + 0.5 * columnWidth - rebarCorver + 0.5 * diameterBasicClamp,
+                        elementOrigin.Y - 0.5 * columnHeight + rebarCorver - 0.5 * diameterBasicClamp,
+                        elementOrigin.Z + _bottomOffsetBasicClamp
+                        );
+
+                    Curve lineBasicClamp_1 = Line.CreateBound(basicClampPoint_1, basicClampPoint_2);
+                    Curve lineBasicClamp_2 = Line.CreateBound(basicClampPoint_2, basicClampPoint_3);
+                    Curve lineBasicClamp_3 = Line.CreateBound(basicClampPoint_3, basicClampPoint_4);
+                    Curve lineBasicClamp_4 = Line.CreateBound(basicClampPoint_4, basicClampPoint_1);
+                    List<Curve> linesBasicClamp = new List<Curve>() { lineBasicClamp_1, lineBasicClamp_2, lineBasicClamp_3, lineBasicClamp_4};
 
 
 
+                    Rebar rebarBasicLowerClamp = _creatureRebarClampsFromCurvesAndShape(doc, rebarClamp, basicClampBarTapes, element, linesBasicClamp);
+                    int countClampLower = _view.GetValueCountLowerClamp();
+                    double stepClampLower = _view.GetValueStepLowerClamp() / 304.8;
+
+                    // Перевод шага стержней в мм (для случаев если параметры единицы проекта для интервалов стержней, не в мм.
+                    Parameter stepLowerClamp = rebarBasicLowerClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_BAR_SPACING);
+                    DisplayUnitType displayUnitType = stepLowerClamp.DisplayUnitType;
+                    displayUnitType = DisplayUnitType.DUT_MILLIMETERS;
+
+                    rebarBasicLowerClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_LAYOUT_RULE).Set(3);
+                    rebarBasicLowerClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_QUANTITY_OF_BARS).Set(countClampLower + 1);
+                    rebarBasicLowerClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_BAR_SPACING).Set(stepClampLower);
+                    rebars.Add(rebarBasicLowerClamp);
+
+
+                    Rebar rebarBasicMiddleClamp = _creatureRebarClampsFromCurvesAndShape(doc, rebarClamp, basicClampBarTapes, element, linesBasicClamp);
+                    int countClampMiddle = _view.GetValueCountMiddleClamp();
+                    double stepClampMiddle = _view.GetValueStepMiddleClamp() / 304.8;
+
+                    // Перевод шага стержней в мм (для случаев если параметры единицы проекта для интервалов стержней, не в мм.
+                    Parameter stepMiddleClamp = rebarBasicMiddleClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_BAR_SPACING);
+                    displayUnitType = stepMiddleClamp.DisplayUnitType;
+                    displayUnitType = DisplayUnitType.DUT_MILLIMETERS;
+
+                    rebarBasicMiddleClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_LAYOUT_RULE).Set(3);
+                    rebarBasicMiddleClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_QUANTITY_OF_BARS).Set(countClampMiddle);
+                    rebarBasicMiddleClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_BAR_SPACING).Set(stepClampMiddle);
+
+                    XYZ vectorMoveMiddleClamp = new XYZ(0, 0, (stepClampLower * countClampLower + stepClampMiddle));
+                    ElementTransformUtils.MoveElement(doc, rebarBasicMiddleClamp.Id, vectorMoveMiddleClamp);
+                    rebars.Add(rebarBasicMiddleClamp);
+
+                    
+                    Rebar rebarBasicTopClamp = _creatureRebarClampsFromCurvesAndShape(doc, rebarClamp, basicClampBarTapes, element, linesBasicClamp);
+                    int countClampTop = _view.GetValueCountTopClamp();
+                    double stepClampTop = _view.GetValueStepTopClamp() / 304.8;
+
+                    // Перевод шага стержней в мм (для случаев если параметры единицы проекта для интервалов стержней, не в мм.
+                    Parameter stepTopClamp = rebarBasicTopClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_BAR_SPACING);
+                    displayUnitType = stepTopClamp.DisplayUnitType;
+                    displayUnitType = DisplayUnitType.DUT_MILLIMETERS;
+
+                    rebarBasicTopClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_LAYOUT_RULE).Set(3);
+                    rebarBasicTopClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_QUANTITY_OF_BARS).Set(countClampTop);
+                    rebarBasicTopClamp.get_Parameter(BuiltInParameter.REBAR_ELEM_BAR_SPACING).Set(stepClampTop);
+
+                    XYZ vectorMoveTopClamp = new XYZ(0, 0, (stepClampLower * countClampLower + stepClampMiddle * countClampMiddle + stepClampTop));
+                    ElementTransformUtils.MoveElement(doc, rebarBasicTopClamp.Id, vectorMoveTopClamp);
+                    rebars.Add(rebarBasicTopClamp);
+                    
                     #endregion
 
-
+                    #endregion
                     totalMessage++;
                     if (rebars.Count > 0)
                     {
@@ -790,7 +901,7 @@ namespace ReinforcementSquareColumns.RequestHandler
                         }
                     }
                 }
-                firstTrans.Commit();
+                t.Commit();
             }
         }
 
@@ -814,6 +925,7 @@ namespace ReinforcementSquareColumns.RequestHandler
             Parameter lenghtRebarCorver = rebarCorverType.get_Parameter(BuiltInParameter.COVER_TYPE_LENGTH);
             return lenghtRebarCorver;
         }
+
         /// <summary>
         /// Выбирает типы форм арматуры в проекте и возращает указаный тип арматуры по имени.
         /// </summary>
@@ -821,7 +933,7 @@ namespace ReinforcementSquareColumns.RequestHandler
         /// Форма арматуры указанной арматуры
         /// </returns>
         /// <exception cref= "System.NullReferenceException">: Ссылка на объект не указывает на экземпляр объекта.</exception>
-        public RebarShape GetRebarShape(string name)
+        private RebarShape _getRebarShape(string name)
         {
             List<RebarShape> rebarShapeList = new FilteredElementCollector(doc)
                 .OfClass(typeof(RebarShape)).Cast<RebarShape>()
@@ -837,7 +949,36 @@ namespace ReinforcementSquareColumns.RequestHandler
             return null;
         }
 
-        private Rebar _creatureLongitudinalRebar(Document doc, RebarShape rebarShape, RebarBarType rebarBarType, Element element, List<Curve> myMainRebarCurves)
+        /// <summary>
+        /// Выбирает типы отгиба арматуры в проекте и возращает указаный тип отгиба арматуры по имени.
+        /// </summary>
+        /// <returns>
+        /// Отгиб арматуры указанной арматуры
+        /// </returns>
+        /// <exception cref= "System.NullReferenceException">: Ссылка на объект не указывает на экземпляр объекта.</exception>
+        private RebarHookType _getRebarHookType(string name)
+        {
+            List<RebarHookType> rebarHookTypes = new FilteredElementCollector(doc)
+                .OfClass(typeof(RebarHookType)).Cast<RebarHookType>()
+                .ToList();
+
+            foreach (RebarHookType rebarHookType in rebarHookTypes)
+            {
+                if (rebarHookType.Name == name)
+                {
+                    return rebarHookType;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Создает продольную арматуру на основе curves и выбранной формы
+        /// </summary>
+        /// <returns>
+        /// Созданный стержень
+        /// </returns>
+        private Rebar _creatureRebarFromCurvesAndShape(Document doc, RebarShape rebarShape, RebarBarType rebarBarType, Element element, List<Curve> rebarCurves)
         {
             XYZ mainRebarNormal = new XYZ(0, 1, 0);  //Нормаль для построения стержней основной арматуры
             Rebar rebar = Rebar.CreateFromCurvesAndShape(
@@ -848,27 +989,35 @@ namespace ReinforcementSquareColumns.RequestHandler
                 null,
                 element,
                 mainRebarNormal,
-                myMainRebarCurves,
+                rebarCurves,
                 RebarHookOrientation.Right,
                 RebarHookOrientation.Right);
             return rebar;
         }
 
-        private Rebar _creatureRebarClamps(Document doc, RebarShape rebarShape, RebarBarType rebarBarType, Element element, List<Curve> myMainRebarCurves)
+
+        /// <summary>
+        /// Создает хомуты на основе curves и выбранной формы, а также отгиба арматуры
+        /// </summary>
+        /// <returns>
+        /// Созданный хомут
+        /// </returns>
+        private Rebar _creatureRebarClampsFromCurvesAndShape(Document doc, RebarShape rebarShape, RebarBarType rebarBarType, Element element, List<Curve> rebarCurves)
         {
             XYZ clampRebarNormal = new XYZ(0, 0, 1);  //Нормаль для построения стержней основной арматуры
             Rebar rebar = Rebar.CreateFromCurvesAndShape(
                 doc,
                 rebarShape,
                 rebarBarType,
-                null,
-                null,
+                rebarHookType,
+                rebarHookType,
                 element,
-                 clampRebarNormal,
-                myMainRebarCurves,
+                clampRebarNormal,
+                rebarCurves,
                 RebarHookOrientation.Right,
                 RebarHookOrientation.Right);
             return rebar;
+            //doc.GetElement(rebarShape.get_Parameter(BuiltInParameter.REBAR_ELEM_HOOK_START_TYPE).AsElementId());
         }
     }
 }

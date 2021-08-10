@@ -72,20 +72,21 @@ namespace StructuralStrengthening
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.groupParamSizeStepReinforcement = new System.Windows.Forms.GroupBox();
             this.textBoxBottomOffsetMainBars = new System.Windows.Forms.TextBox();
-            this.textBoxCountLowerTransverseReinforcement = new System.Windows.Forms.TextBox();
-            this.textBoxCountMiddleTransverseReinforcement = new System.Windows.Forms.TextBox();
-            this.textBoxStepMiddleTransverseReinforcement = new System.Windows.Forms.TextBox();
-            this.textBoxFirstStirrupOffset = new System.Windows.Forms.TextBox();
-            this.textBoxStepLowerTransverseReinforcement = new System.Windows.Forms.TextBox();
-            this.textBoxStepTopTransverseReinforcement = new System.Windows.Forms.TextBox();
+            this.textBoxCountLowerClamps = new System.Windows.Forms.TextBox();
+            this.textBoxCountTopClamps = new System.Windows.Forms.TextBox();
+            this.textBoxCountMiddleClamps = new System.Windows.Forms.TextBox();
+            this.textBoxStepMiddleClamps = new System.Windows.Forms.TextBox();
+            this.textBoxBottomOffsetBasicClamp = new System.Windows.Forms.TextBox();
+            this.textBoxStepLowerClamps = new System.Windows.Forms.TextBox();
+            this.textBoxStepTopClamps = new System.Windows.Forms.TextBox();
             this.textBoxOverlapThickness = new System.Windows.Forms.TextBox();
             this.textBoxRebarOutletsLength = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupParamTypeReinforcement = new System.Windows.Forms.GroupBox();
             this.lblRebarCoverTypes = new System.Windows.Forms.Label();
             this.comboBoxFirstMainBarTapes = new System.Windows.Forms.ComboBox();
-            this.comboBoxBasicStirrupBarTapes = new System.Windows.Forms.ComboBox();
-            this.comboBoxSecondStirrupBarTapes = new System.Windows.Forms.ComboBox();
+            this.comboBoxBasicClampBarTapes = new System.Windows.Forms.ComboBox();
+            this.comboBoxSecondClampBarTapes = new System.Windows.Forms.ComboBox();
             this.comboBoxSecondMainBarTapes = new System.Windows.Forms.ComboBox();
             this.textBoxSecondСenterLeftRebarOffset_1 = new System.Windows.Forms.TextBox();
             this.textBoxSecondСenterTopRebarOffset_2 = new System.Windows.Forms.TextBox();
@@ -613,12 +614,13 @@ namespace StructuralStrengthening
             this.groupParamSizeStepReinforcement.BackgroundImage = global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType1_SizeAndStep;
             this.groupParamSizeStepReinforcement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxBottomOffsetMainBars);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountLowerTransverseReinforcement);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountMiddleTransverseReinforcement);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepMiddleTransverseReinforcement);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxFirstStirrupOffset);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepLowerTransverseReinforcement);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepTopTransverseReinforcement);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountLowerClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountTopClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountMiddleClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepMiddleClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxBottomOffsetBasicClamp);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepLowerClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepTopClamps);
             this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxOverlapThickness);
             this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxRebarOutletsLength);
             this.groupParamSizeStepReinforcement.Controls.Add(this.label6);
@@ -637,53 +639,69 @@ namespace StructuralStrengthening
             this.textBoxBottomOffsetMainBars.Size = new System.Drawing.Size(45, 20);
             this.textBoxBottomOffsetMainBars.TabIndex = 2;
             this.textBoxBottomOffsetMainBars.Text = "600";
+            this.toolTip.SetToolTip(this.textBoxBottomOffsetMainBars, "Отступ продольной арматуры снизу");
             // 
-            // textBoxCountLowerTransverseReinforcement
+            // textBoxCountLowerClamps
             // 
-            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(277, 442);
-            this.textBoxCountLowerTransverseReinforcement.Name = "textBoxCountLowerTransverseReinforcement";
-            this.textBoxCountLowerTransverseReinforcement.Size = new System.Drawing.Size(45, 20);
-            this.textBoxCountLowerTransverseReinforcement.TabIndex = 2;
-            this.textBoxCountLowerTransverseReinforcement.Text = "3";
+            this.textBoxCountLowerClamps.Location = new System.Drawing.Point(256, 445);
+            this.textBoxCountLowerClamps.Name = "textBoxCountLowerClamps";
+            this.textBoxCountLowerClamps.Size = new System.Drawing.Size(45, 20);
+            this.textBoxCountLowerClamps.TabIndex = 2;
+            this.textBoxCountLowerClamps.Text = "4";
+            this.toolTip.SetToolTip(this.textBoxCountLowerClamps, "Количество хомутов снизу");
             // 
-            // textBoxCountMiddleTransverseReinforcement
+            // textBoxCountTopClamps
             // 
-            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(277, 321);
-            this.textBoxCountMiddleTransverseReinforcement.Name = "textBoxCountMiddleTransverseReinforcement";
-            this.textBoxCountMiddleTransverseReinforcement.Size = new System.Drawing.Size(40, 20);
-            this.textBoxCountMiddleTransverseReinforcement.TabIndex = 2;
-            this.textBoxCountMiddleTransverseReinforcement.Text = "5";
+            this.textBoxCountTopClamps.Location = new System.Drawing.Point(256, 200);
+            this.textBoxCountTopClamps.Name = "textBoxCountTopClamps";
+            this.textBoxCountTopClamps.Size = new System.Drawing.Size(40, 20);
+            this.textBoxCountTopClamps.TabIndex = 2;
+            this.textBoxCountTopClamps.Text = "5";
             // 
-            // textBoxStepMiddleTransverseReinforcement
+            // textBoxCountMiddleClamps
             // 
-            this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(217, 321);
-            this.textBoxStepMiddleTransverseReinforcement.Name = "textBoxStepMiddleTransverseReinforcement";
-            this.textBoxStepMiddleTransverseReinforcement.Size = new System.Drawing.Size(45, 20);
-            this.textBoxStepMiddleTransverseReinforcement.TabIndex = 2;
-            this.textBoxStepMiddleTransverseReinforcement.Text = "200";
+            this.textBoxCountMiddleClamps.Location = new System.Drawing.Point(256, 323);
+            this.textBoxCountMiddleClamps.Name = "textBoxCountMiddleClamps";
+            this.textBoxCountMiddleClamps.Size = new System.Drawing.Size(40, 20);
+            this.textBoxCountMiddleClamps.TabIndex = 2;
+            this.textBoxCountMiddleClamps.Text = "8";
+            this.toolTip.SetToolTip(this.textBoxCountMiddleClamps, "Количество хомутов посередине");
             // 
-            // textBoxFirstStirrupOffset
+            // textBoxStepMiddleClamps
             // 
-            this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(65, 476);
-            this.textBoxFirstStirrupOffset.Name = "textBoxFirstStirrupOffset";
-            this.textBoxFirstStirrupOffset.Size = new System.Drawing.Size(45, 20);
-            this.textBoxFirstStirrupOffset.TabIndex = 2;
-            this.textBoxFirstStirrupOffset.Text = "500";
+            this.textBoxStepMiddleClamps.Location = new System.Drawing.Point(205, 323);
+            this.textBoxStepMiddleClamps.Name = "textBoxStepMiddleClamps";
+            this.textBoxStepMiddleClamps.Size = new System.Drawing.Size(45, 20);
+            this.textBoxStepMiddleClamps.TabIndex = 2;
+            this.textBoxStepMiddleClamps.Text = "200";
+            this.toolTip.SetToolTip(this.textBoxStepMiddleClamps, "Шаг хомутов посередине");
             // 
-            // textBoxStepLowerTransverseReinforcement
+            // textBoxBottomOffsetBasicClamp
             // 
-            this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(217, 445);
-            this.textBoxStepLowerTransverseReinforcement.Name = "textBoxStepLowerTransverseReinforcement";
-            this.textBoxStepLowerTransverseReinforcement.Size = new System.Drawing.Size(45, 20);
-            this.textBoxStepLowerTransverseReinforcement.TabIndex = 2;
-            this.textBoxStepLowerTransverseReinforcement.Text = "100";
+            this.textBoxBottomOffsetBasicClamp.Location = new System.Drawing.Point(65, 476);
+            this.textBoxBottomOffsetBasicClamp.Name = "textBoxBottomOffsetBasicClamp";
+            this.textBoxBottomOffsetBasicClamp.Size = new System.Drawing.Size(45, 20);
+            this.textBoxBottomOffsetBasicClamp.TabIndex = 2;
+            this.textBoxBottomOffsetBasicClamp.Text = "80";
+            this.toolTip.SetToolTip(this.textBoxBottomOffsetBasicClamp, "Отступ поперечных стержней снизу");
             // 
-            // textBoxStepTopTransverseReinforcement
+            // textBoxStepLowerClamps
             // 
-            this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(59, 191);
-            this.textBoxStepTopTransverseReinforcement.Name = "textBoxStepTopTransverseReinforcement";
-            this.textBoxStepTopTransverseReinforcement.Size = new System.Drawing.Size(45, 20);
-            this.textBoxStepTopTransverseReinforcement.TabIndex = 2;
+            this.textBoxStepLowerClamps.Location = new System.Drawing.Point(205, 445);
+            this.textBoxStepLowerClamps.Name = "textBoxStepLowerClamps";
+            this.textBoxStepLowerClamps.Size = new System.Drawing.Size(45, 20);
+            this.textBoxStepLowerClamps.TabIndex = 2;
+            this.textBoxStepLowerClamps.Text = "100";
+            this.toolTip.SetToolTip(this.textBoxStepLowerClamps, "Шаг хомутов снизу");
+            // 
+            // textBoxStepTopClamps
+            // 
+            this.textBoxStepTopClamps.Location = new System.Drawing.Point(205, 200);
+            this.textBoxStepTopClamps.Name = "textBoxStepTopClamps";
+            this.textBoxStepTopClamps.Size = new System.Drawing.Size(45, 20);
+            this.textBoxStepTopClamps.TabIndex = 2;
+            this.textBoxStepTopClamps.Text = "150";
+            this.toolTip.SetToolTip(this.textBoxStepTopClamps, "Шаг хомутов сверху");
             // 
             // textBoxOverlapThickness
             // 
@@ -692,6 +710,7 @@ namespace StructuralStrengthening
             this.textBoxOverlapThickness.Size = new System.Drawing.Size(45, 20);
             this.textBoxOverlapThickness.TabIndex = 2;
             this.textBoxOverlapThickness.Text = "200";
+            this.toolTip.SetToolTip(this.textBoxOverlapThickness, "Толщина плиты");
             // 
             // textBoxRebarOutletsLength
             // 
@@ -700,6 +719,7 @@ namespace StructuralStrengthening
             this.textBoxRebarOutletsLength.Size = new System.Drawing.Size(45, 20);
             this.textBoxRebarOutletsLength.TabIndex = 2;
             this.textBoxRebarOutletsLength.Text = "500";
+            this.toolTip.SetToolTip(this.textBoxRebarOutletsLength, "Длина выпусков арматуры");
             // 
             // label6
             // 
@@ -717,8 +737,8 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.groupParamTypeReinforcement.Controls.Add(this.lblRebarCoverTypes);
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxFirstMainBarTapes);
-            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxBasicStirrupBarTapes);
-            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondStirrupBarTapes);
+            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxBasicClampBarTapes);
+            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondMainBarTapes);
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLeftRebarOffset_1);
             this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterTopRebarOffset_2);
@@ -760,29 +780,29 @@ namespace StructuralStrengthening
             this.comboBoxFirstMainBarTapes.Text = "FirstMainBarTapes";
             this.toolTip.SetToolTip(this.comboBoxFirstMainBarTapes, "Выберете типоразмер основной продольной арматуры!");
             // 
-            // comboBoxBasicStirrupBarTapes
+            // comboBoxBasicClampBarTapes
             // 
-            this.comboBoxBasicStirrupBarTapes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBoxBasicStirrupBarTapes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.comboBoxBasicStirrupBarTapes.FormattingEnabled = true;
-            this.comboBoxBasicStirrupBarTapes.Location = new System.Drawing.Point(375, 16);
-            this.comboBoxBasicStirrupBarTapes.Name = "comboBoxBasicStirrupBarTapes";
-            this.comboBoxBasicStirrupBarTapes.Size = new System.Drawing.Size(125, 21);
-            this.comboBoxBasicStirrupBarTapes.TabIndex = 3;
-            this.comboBoxBasicStirrupBarTapes.Text = "BasicStirrupBarTapes";
-            this.toolTip.SetToolTip(this.comboBoxBasicStirrupBarTapes, "Выберете типоразмер основной поперечной арматуры!");
+            this.comboBoxBasicClampBarTapes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBoxBasicClampBarTapes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.comboBoxBasicClampBarTapes.FormattingEnabled = true;
+            this.comboBoxBasicClampBarTapes.Location = new System.Drawing.Point(375, 16);
+            this.comboBoxBasicClampBarTapes.Name = "comboBoxBasicClampBarTapes";
+            this.comboBoxBasicClampBarTapes.Size = new System.Drawing.Size(125, 21);
+            this.comboBoxBasicClampBarTapes.TabIndex = 3;
+            this.comboBoxBasicClampBarTapes.Text = "BasicStirrupBarTapes";
+            this.toolTip.SetToolTip(this.comboBoxBasicClampBarTapes, "Выберете типоразмер основной поперечной арматуры!");
             // 
-            // comboBoxSecondStirrupBarTapes
+            // comboBoxSecondClampBarTapes
             // 
-            this.comboBoxSecondStirrupBarTapes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBoxSecondStirrupBarTapes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.comboBoxSecondStirrupBarTapes.FormattingEnabled = true;
-            this.comboBoxSecondStirrupBarTapes.Location = new System.Drawing.Point(377, 110);
-            this.comboBoxSecondStirrupBarTapes.Name = "comboBoxSecondStirrupBarTapes";
-            this.comboBoxSecondStirrupBarTapes.Size = new System.Drawing.Size(125, 21);
-            this.comboBoxSecondStirrupBarTapes.TabIndex = 3;
-            this.comboBoxSecondStirrupBarTapes.Text = "SecondStirrupBarTapes";
-            this.toolTip.SetToolTip(this.comboBoxSecondStirrupBarTapes, "Выберете типоразмер второстепенной поперечной арматуры!");
+            this.comboBoxSecondClampBarTapes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBoxSecondClampBarTapes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.comboBoxSecondClampBarTapes.FormattingEnabled = true;
+            this.comboBoxSecondClampBarTapes.Location = new System.Drawing.Point(377, 110);
+            this.comboBoxSecondClampBarTapes.Name = "comboBoxSecondClampBarTapes";
+            this.comboBoxSecondClampBarTapes.Size = new System.Drawing.Size(125, 21);
+            this.comboBoxSecondClampBarTapes.TabIndex = 3;
+            this.comboBoxSecondClampBarTapes.Text = "SecondStirrupBarTapes";
+            this.toolTip.SetToolTip(this.comboBoxSecondClampBarTapes, "Выберете типоразмер второстепенной поперечной арматуры!");
             // 
             // comboBoxSecondMainBarTapes
             // 
@@ -1051,7 +1071,7 @@ namespace StructuralStrengthening
         private System.Windows.Forms.CheckBox checkBoxSeleckAllColumns;
         private System.Windows.Forms.TextBox textBoxSecondСenterRightRebarOffset_1;
         private System.Windows.Forms.ComboBox comboBoxFirstMainBarTapes;
-        private System.Windows.Forms.ComboBox comboBoxBasicStirrupBarTapes;
+        private System.Windows.Forms.ComboBox comboBoxBasicClampBarTapes;
         private System.Windows.Forms.ComboBox comboBoxSecondMainBarTapes;
         private System.Windows.Forms.TextBox textBoxSecondСenterLeftRebarOffset_1;
         private System.Windows.Forms.TextBox textBoxSecondСenterTopRebarOffset_2;
@@ -1060,16 +1080,16 @@ namespace StructuralStrengthening
         private System.Windows.Forms.TextBox textBoxSecondСenterLowerRebarOffset_2;
         private System.Windows.Forms.TextBox textBoxSecondСenterLeftRebarOffset_2;
         private System.Windows.Forms.TextBox textBoxSecondСenterRightRebarOffset_2;
-        private System.Windows.Forms.ComboBox comboBoxSecondStirrupBarTapes;
+        private System.Windows.Forms.ComboBox comboBoxSecondClampBarTapes;
         private System.Windows.Forms.Label lblRebarCoverTypes;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.TextBox textBoxCountLowerTransverseReinforcement;
-        private System.Windows.Forms.TextBox textBoxCountMiddleTransverseReinforcement;
-        private System.Windows.Forms.TextBox textBoxStepMiddleTransverseReinforcement;
-        private System.Windows.Forms.TextBox textBoxFirstStirrupOffset;
-        private System.Windows.Forms.TextBox textBoxStepLowerTransverseReinforcement;
-        private System.Windows.Forms.TextBox textBoxStepTopTransverseReinforcement;
+        private System.Windows.Forms.TextBox textBoxCountLowerClamps;
+        private System.Windows.Forms.TextBox textBoxCountMiddleClamps;
+        private System.Windows.Forms.TextBox textBoxStepMiddleClamps;
+        private System.Windows.Forms.TextBox textBoxBottomOffsetBasicClamp;
+        private System.Windows.Forms.TextBox textBoxStepLowerClamps;
+        private System.Windows.Forms.TextBox textBoxStepTopClamps;
         private System.Windows.Forms.TextBox textBoxOverlapThickness;
         private System.Windows.Forms.TextBox textBoxRebarOutletsLength;
         private System.Windows.Forms.Button butReinforceColumns;
@@ -1081,5 +1101,6 @@ namespace StructuralStrengthening
         private System.Windows.Forms.TextBox textBoxAdditionalOffsetBendBar;
         private System.Windows.Forms.TextBox textBoxBottomOffsetMainBars;
         private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.TextBox textBoxCountTopClamps;
     }
 }
