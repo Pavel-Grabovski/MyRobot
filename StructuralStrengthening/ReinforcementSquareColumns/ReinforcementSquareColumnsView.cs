@@ -481,6 +481,18 @@ namespace StructuralStrengthening
         }
 
         /// <summary>
+        /// Активный выбранный типоразмер дополнительных хомутов
+        /// </summary>
+        /// <returns>
+        /// Типоразмер, выбранной пользователем, дополнительных хомутов
+        /// </returns>
+        /// <exception cref= "System.NullReferenceException">: Ссылка на объект не указывает на экземпляр объекта.</exception>
+        public RebarBarType GetSecondClampBarTapes()
+        {
+            return (RebarBarType)this.comboBoxSecondClampBarTapes.SelectedItem;
+        }
+
+        /// <summary>
         /// Получить тип выбранного армирования
         /// </summary>
         /// <returns>

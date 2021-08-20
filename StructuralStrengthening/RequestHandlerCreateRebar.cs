@@ -866,8 +866,101 @@ namespace ReinforcementSquareColumns.RequestHandler
                     XYZ vectorMoveTopClamp = new XYZ(0, 0, (stepClampLower * countClampLower + stepClampMiddle * countClampMiddle + stepClampTop));
                     ElementTransformUtils.MoveElement(doc, rebarBasicTopClamp.Id, vectorMoveTopClamp);
                     rebars.Add(rebarBasicTopClamp);
-                    
+
                     #endregion
+
+                    #region Хомуты дополнительные ромбовидные
+                    if (this._activeReinforcementType == "radioButRebarType3" || this._activeReinforcementType == "radioButRebarType5")
+                    {
+                        /*
+                        RebarBarType secondClampBarTapes = _view.GetSecondClampBarTapes();
+                        double diameterSecondClamp = secondClampBarTapes.get_Parameter(BuiltInParameter.REBAR_BAR_DIAMETER).AsDouble();
+
+                        double diameterBendingRebar = 
+                            secondClampBarTapes.get_Parameter(BuiltInParameter.REBAR_BAR_STIRRUP_BEND_DIAMETER).AsDouble();
+
+                        //Дополнительное смещение связанное с загибами поперечной арматуры
+                        double additionalOffset =
+                            ((diameterBendingRebar * 0.5 + diameterSecondClamp * 0.5) / Math.Cos(45 * Math.PI / 180)) - diameterBendingRebar * 0.5;
+
+
+                        // Нижний левый угол
+                        XYZ secondClampPoint_1 = new XYZ(
+                            elementOrigin.X + (- 0.5 * columnWidth + rebarCorver - additionalOffset) * Math.Cos(45 * Math.PI / 180),
+                            elementOrigin.Y + (- 0.5 * columnHeight + rebarCorver - additionalOffset) * Math.Cos(45 * Math.PI / 180),
+                            elementOrigin.Z + _bottomOffsetBasicClamp + 0.5 * (diameterSecondClamp + diameterBasicClamp));
+
+                        // Верхний левый угол
+                        XYZ secondClampPoint_2 = new XYZ(
+                            elementOrigin.X + (-0.5 * columnWidth + rebarCorver - additionalOffset) * Math.Cos(45 * Math.PI / 180),
+                            elementOrigin.Y + (0.5 * columnHeight - rebarCorver + additionalOffset) * Math.Cos(45 * Math.PI / 180),
+                            elementOrigin.Z + _bottomOffsetBasicClamp + 0.5 * (diameterSecondClamp + diameterBasicClamp));
+
+                        // Верхний правый угол
+                        XYZ secondClampPoint_3 = new XYZ(
+                            elementOrigin.X + (0.5 * columnWidth - rebarCorver + additionalOffset) * Math.Cos(45 * Math.PI / 180),
+                            elementOrigin.Y + (0.5 * columnHeight - rebarCorver + additionalOffset) * Math.Cos(45 * Math.PI / 180),
+                            elementOrigin.Z + _bottomOffsetBasicClamp + 0.5 * (diameterSecondClamp + diameterBasicClamp));
+
+                        // Нижний правый угол
+                        XYZ secondClampPoint_4 = new XYZ(
+                            elementOrigin.X + (0.5 * columnWidth - rebarCorver + additionalOffset) * Math.Cos(45 * Math.PI / 180),
+                            elementOrigin.Y + (- 0.5 * columnHeight + rebarCorver - additionalOffset) * Math.Cos(45 * Math.PI / 180),
+                            elementOrigin.Z + _bottomOffsetBasicClamp + 0.5 * (diameterSecondClamp + diameterBasicClamp));
+
+                        MessageBox.Show($"{(-0.5 * columnWidth + rebarCorver - additionalOffset) * Math.Cos(45 * Math.PI / 180)}");
+                        MessageBox.Show($"{(0.5 * columnWidth - rebarCorver + additionalOffset) * Math.Cos(45 * Math.PI / 180)}");
+                        MessageBox.Show($"{(-0.5 * columnWidth + rebarCorver - additionalOffset) * Math.Cos(45 * Math.PI / 180)}");
+                        MessageBox.Show($"{(0.5 * columnWidth - rebarCorver + additionalOffset) * Math.Cos(45 * Math.PI / 180)}");
+
+
+
+
+
+
+                        /*
+                        // Верхняя точка
+                        XYZ secondClampPointTop = new XYZ(elementOrigin.X,
+                            elementOrigin.Y + 0.5 * columnHeight - rebarCorver + additionalOffset,
+                            elementOrigin.Z + _bottomOffsetBasicClamp + 0.5 * (diameterSecondClamp + diameterBasicClamp));
+
+
+
+                        // Правая точка
+                        XYZ secondClampPointRight = new XYZ(
+                            elementOrigin.X + 0.5 * columnWidth - rebarCorver + additionalOffset,
+                            elementOrigin.Y,
+                            elementOrigin.Z + _bottomOffsetBasicClamp + 0.5 * (diameterSecondClamp + diameterBasicClamp));
+
+                        // Нижняя точка
+                        XYZ secondClampPointLower = new XYZ(elementOrigin.X,
+                            elementOrigin.Y - 0.5 * columnHeight + rebarCorver - additionalOffset,
+                            elementOrigin.Z + _bottomOffsetBasicClamp + 0.5 * (diameterSecondClamp + diameterBasicClamp));
+
+                        // Левая точка
+                        XYZ secondClampPointLeft = new XYZ(
+                            elementOrigin.X - 0.5 * columnWidth + rebarCorver - additionalOffset,
+                            elementOrigin.Y,
+                            elementOrigin.Z + _bottomOffsetBasicClamp + 0.5 * (diameterSecondClamp + diameterBasicClamp));
+
+                        Curve lineSecondClamp_1 = Line.CreateBound(secondClampPoint_1, secondClampPoint_2);
+                        Curve lineSecondClamp_2 = Line.CreateBound(secondClampPoint_2, secondClampPoint_3);
+                        Curve lineSecondClamp_3 = Line.CreateBound(secondClampPoint_3, secondClampPoint_4);
+                        Curve lineSecondClamp_4 = Line.CreateBound(secondClampPoint_4, secondClampPoint_1);
+                        List<Curve> linesSecondClamp = new List<Curve>() { lineSecondClamp_1, lineSecondClamp_2, lineSecondClamp_3, lineSecondClamp_4 };
+                        */
+
+
+                        /*
+                        Rebar rebarSecobdLowerClamp = _creatureRebarClampsFromCurvesAndShape(doc, rebarClamp, secondClampBarTapes, element, linesSecondClamp);
+                        rebars.Add(rebarSecobdLowerClamp);
+                        
+                        */
+                    }
+                    #endregion
+
+
+
 
                     #endregion
                     totalMessage++;
