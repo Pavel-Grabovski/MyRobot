@@ -784,6 +784,14 @@ namespace StructuralStrengthening
             return this.checkBoxShowUnoverlapped.Checked;
         }
 
+
+        /// <summary>
+        /// Обращение к checkBox, удаление ранее созданной арматуры
+        /// </summary>
+        public bool IsDeleteRebars()
+        {
+            return this.checkBoxDeleteRebars.Checked;
+        }
     }
 }
 

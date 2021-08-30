@@ -103,7 +103,7 @@ namespace StructuralStrengthening
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBoxRebarSolidInView = new System.Windows.Forms.CheckBox();
             this.checkBoxShowUnoverlapped = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBoxDeleteRebars = new System.Windows.Forms.CheckBox();
             this.groupBoxReinforcementType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -972,16 +972,15 @@ namespace StructuralStrengthening
             this.checkBoxShowUnoverlapped.Text = "Показать неперекрытые";
             this.checkBoxShowUnoverlapped.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // checkBoxDeleteRebars
             // 
-            this.checkBox5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox5.Enabled = false;
-            this.checkBox5.Location = new System.Drawing.Point(1270, 307);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(137, 46);
-            this.checkBox5.TabIndex = 9;
-            this.checkBox5.Text = "Удалить ранее созданую арматуру";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBoxDeleteRebars.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBoxDeleteRebars.Location = new System.Drawing.Point(1270, 307);
+            this.checkBoxDeleteRebars.Name = "checkBoxDeleteRebars";
+            this.checkBoxDeleteRebars.Size = new System.Drawing.Size(137, 46);
+            this.checkBoxDeleteRebars.TabIndex = 9;
+            this.checkBoxDeleteRebars.Text = "Удалить ранее созданую арматуру";
+            this.checkBoxDeleteRebars.UseVisualStyleBackColor = true;
             // 
             // ReinforcementSquareColumnsView
             // 
@@ -990,7 +989,7 @@ namespace StructuralStrengthening
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1419, 560);
-            this.Controls.Add(this.checkBox5);
+            this.Controls.Add(this.checkBoxDeleteRebars);
             this.Controls.Add(this.checkBoxShowUnoverlapped);
             this.Controls.Add(this.checkBoxRebarSolidInView);
             this.Controls.Add(this.checkBox1);
@@ -1100,7 +1099,7 @@ namespace StructuralStrengthening
         private System.Windows.Forms.CheckBox checkBoxShowUnoverlapped;
         private System.Windows.Forms.TextBox textBoxAdditionalOffsetBendBar;
         private System.Windows.Forms.TextBox textBoxBottomOffsetMainBars;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBoxDeleteRebars;
         private System.Windows.Forms.TextBox textBoxCountTopClamps;
     }
 }

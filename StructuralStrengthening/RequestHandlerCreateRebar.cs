@@ -102,6 +102,23 @@ namespace ReinforcementSquareColumns.RequestHandler
         {
             using (Transaction t = new Transaction(doc))
             {
+                if(_view.IsDeleteRebars())
+                {
+                    t.Start("Удаление арматуры элементов");
+                    foreach (Element element in _selectedElements)
+                    {
+                        IList<Rebar> rebarsInHost = RebarHostData.GetRebarHostData(element).GetRebarsInHost();
+
+                        foreach (Rebar rebar in rebarsInHost)
+                        {
+                            doc.Delete(rebar.Id);
+                        }
+                    }
+                    MessageBox.Show("Ранее созданная арматуры успешно удалена !");
+                    t.Commit();
+                }
+
+
 
                 t.Start("Армирование квадратной колонны");
                 int totalMessage = 0; // Чтобы сообщения не повторялись по нескольку раз во время работы цикла
