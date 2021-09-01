@@ -540,7 +540,7 @@ namespace StructuralStrengthening
             this.textBoxAdditionalOffsetBendBar.Name = "textBoxAdditionalOffsetBendBar";
             this.textBoxAdditionalOffsetBendBar.Size = new System.Drawing.Size(59, 20);
             this.textBoxAdditionalOffsetBendBar.TabIndex = 9;
-            this.textBoxAdditionalOffsetBendBar.Text = "10";
+            this.textBoxAdditionalOffsetBendBar.Text = "0";
             // 
             // label4
             // 
@@ -575,6 +575,7 @@ namespace StructuralStrengthening
             this.radioButMainOverlappingRods.TabStop = true;
             this.radioButMainOverlappingRods.Text = "Гнутые выпуски";
             this.radioButMainOverlappingRods.UseVisualStyleBackColor = true;
+            this.radioButMainOverlappingRods.CheckedChanged += new System.EventHandler(this.radioButMainOverlappingRods_CheckedChanged);
             // 
             // radioButMainWeldingRods
             // 
@@ -587,6 +588,7 @@ namespace StructuralStrengthening
             this.radioButMainWeldingRods.TabStop = true;
             this.radioButMainWeldingRods.Text = "Прямые выпуски";
             this.radioButMainWeldingRods.UseVisualStyleBackColor = true;
+            this.radioButMainWeldingRods.CheckedChanged += new System.EventHandler(this.radioButMainWeldingRods_CheckedChanged);
             // 
             // pictureBox8
             // 

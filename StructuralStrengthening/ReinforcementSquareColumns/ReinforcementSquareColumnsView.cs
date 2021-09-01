@@ -792,6 +792,18 @@ namespace StructuralStrengthening
         {
             return this.checkBoxDeleteRebars.Checked;
         }
+
+        private void radioButMainWeldingRods_CheckedChanged(object sender, EventArgs e)
+        {
+            this.checkBoxIsOutletsInside.Enabled = false;
+            this.textBoxAdditionalOffsetBendBar.Enabled = false;
+        }
+
+        private void radioButMainOverlappingRods_CheckedChanged(object sender, EventArgs e)
+        {
+            this.checkBoxIsOutletsInside.Enabled = true;
+            this.textBoxAdditionalOffsetBendBar.Enabled = true;
+        }
     }
 }
 
