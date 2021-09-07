@@ -48,7 +48,7 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.BackgroundImage =
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType1_Section;
             this.groupParamSizeStepReinforcement.BackgroundImage =
-                global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType1_SizeAndStep;
+                global::StructuralStrengthening.Properties.Resources.SquareColumnsReinforcementType1_SizeAndStep;
 
             //groupParamTypeReinforcement Location
             this.comboBoxBasicClampBarTapes.Location = new System.Drawing.Point(355, 228);
@@ -66,25 +66,13 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterLeftRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_1);
-
-            /*
-            // groupParamSizeStepReinforcement Location
-            this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
-            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
-            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(236, 445);
-            this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(65, 476);
-            this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(59, 445);
-            this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(62, 324);
-            this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(59, 191);
-            this.textBoxOverlapThickness.Location = new System.Drawing.Point(18, 136);
-            */
         }
         private void radioButReinforcementType2_Click(object sender, EventArgs e)
         {
             this.groupParamTypeReinforcement.BackgroundImage =
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType2_Section;
             this.groupParamSizeStepReinforcement.BackgroundImage =
-                global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType2_SizeAndStep;
+                global::StructuralStrengthening.Properties.Resources.SquareColumnsReinforcementType2_SizeAndStep;
 
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondMainBarTapes);
 
@@ -104,25 +92,13 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterLeftRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_1);
-
-            /*
-            // groupParamSizeStepReinforcement Location
-            this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
-            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
-            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(236, 445);
-            this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(65, 476);
-            this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(59, 445);
-            this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(62, 324);
-            this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(59, 191);
-            this.textBoxOverlapThickness.Location = new System.Drawing.Point(18, 136);
-            */
         }
         private void radioButReinforcementType3_Click(object sender, EventArgs e)
         {
             this.groupParamTypeReinforcement.BackgroundImage =
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType3_Section;
             this.groupParamSizeStepReinforcement.BackgroundImage =
-                global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType3_SizeAndStep;
+                global::StructuralStrengthening.Properties.Resources.SquareColumnsReinforcementType3_SizeAndStep;
 
             //groupParamTypeReinforcement Add
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
@@ -144,25 +120,13 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterLeftRebarOffset_1);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_1);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_2);
-
-            /*
-            // groupParamSizeStepReinforcement Location
-            this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
-            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(236, 321);
-            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(236, 445);
-            this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(65, 476);
-            this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(59, 445);
-            this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(62, 324);
-            this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(59, 191);
-            this.textBoxOverlapThickness.Location = new System.Drawing.Point(18, 136);
-            */
         }
         private void radioButReinforcementType4_Click(object sender, EventArgs e)
         {
             this.groupParamTypeReinforcement.BackgroundImage =
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType4_Section;
             this.groupParamSizeStepReinforcement.BackgroundImage =
-                global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType4_SizeAndStep;
+                global::StructuralStrengthening.Properties.Resources.SquareColumnsReinforcementType4_SizeAndStep;
 
             //groupParamTypeReinforcement Add
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
@@ -189,24 +153,13 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterLeftRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_2);
 
-            /*
-            // groupParamSizeStepReinforcement Location
-            this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
-            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(242, 321);
-            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(242, 445);
-            this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(67, 476);
-            this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(55, 444);
-            this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(56, 323);
-            this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(56, 191);
-            this.textBoxOverlapThickness.Location = new System.Drawing.Point(19, 137);
-            */
         }
         private void radioButReinforcementType5_Click(object sender, EventArgs e)
         {
             this.groupParamTypeReinforcement.BackgroundImage =
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType5_Section;
             this.groupParamSizeStepReinforcement.BackgroundImage =
-                global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType5_SizeAndStep;
+                global::StructuralStrengthening.Properties.Resources.SquareColumnsReinforcementType5_SizeAndStep;
 
             //groupParamTypeReinforcement Add
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
@@ -232,25 +185,13 @@ namespace StructuralStrengthening
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterLowerRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterLeftRebarOffset_2);
             this.groupParamTypeReinforcement.Controls.Remove(this.textBoxSecondСenterRightRebarOffset_2);
-
-            /*
-            // groupParamSizeStepReinforcement Location
-            this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(249, 83);
-            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(248, 321);
-            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(249, 445);
-            this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(46, 477);
-            this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(46, 444);
-            this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(48, 323);
-            this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(45, 190);
-            this.textBoxOverlapThickness.Location = new System.Drawing.Point(15, 136);
-            */
         }
         private void radioButReinforcementType6_Click(object sender, EventArgs e)
         {
             this.groupParamTypeReinforcement.BackgroundImage =
                 global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType6_Section;
             this.groupParamSizeStepReinforcement.BackgroundImage =
-                global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType6_SizeAndStep;
+                global::StructuralStrengthening.Properties.Resources.SquareColumnsReinforcementType6_SizeAndStep;
 
             //groupParamTypeReinforcement Add
             this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
@@ -278,18 +219,6 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterTopRebarOffset_1.Location = new System.Drawing.Point(37, 137);
             this.textBoxSecondСenterTopRebarOffset_2.Location = new System.Drawing.Point(37, 104);
             this.comboBoxFirstMainBarTapes.Location = new System.Drawing.Point(5, 14);
-
-            /*
-            // groupParamSizeStepReinforcement Location
-            this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(249, 83);
-            this.textBoxCountMiddleTransverseReinforcement.Location = new System.Drawing.Point(248, 321);
-            this.textBoxCountLowerTransverseReinforcement.Location = new System.Drawing.Point(249, 445);
-            this.textBoxFirstStirrupOffset.Location = new System.Drawing.Point(46, 477);
-            this.textBoxStepLowerTransverseReinforcement.Location = new System.Drawing.Point(46, 444);
-            this.textBoxStepMiddleTransverseReinforcement.Location = new System.Drawing.Point(48, 323);
-            this.textBoxStepTopTransverseReinforcement.Location = new System.Drawing.Point(45, 190);
-            this.textBoxOverlapThickness.Location = new System.Drawing.Point(15, 136);
-            */
         }
 
         #endregion
@@ -797,12 +726,34 @@ namespace StructuralStrengthening
         {
             this.checkBoxIsOutletsInside.Enabled = false;
             this.textBoxAdditionalOffsetBendBar.Enabled = false;
+            this.pictureBox9.Image = null;
         }
 
         private void radioButMainOverlappingRods_CheckedChanged(object sender, EventArgs e)
         {
             this.checkBoxIsOutletsInside.Enabled = true;
             this.textBoxAdditionalOffsetBendBar.Enabled = true;
+            if (this.checkBoxIsOutletsInside.Checked)
+            {
+                this.pictureBox9.Image = global::StructuralStrengthening.Properties.Resources.ExpandRebar;
+            }
+            else
+            {
+                this.pictureBox9.Image = global::StructuralStrengthening.Properties.Resources.NotExpandRebar;
+            }
+
+        }
+
+        private void checkBoxIsOutletsInside_CheckedChanged(object sender, EventArgs e)
+        {
+            if(this.checkBoxIsOutletsInside.Checked)
+            {
+                this.pictureBox9.Image = global::StructuralStrengthening.Properties.Resources.ExpandRebar;
+            }
+            else
+            {
+                this.pictureBox9.Image = global::StructuralStrengthening.Properties.Resources.NotExpandRebar;
+            }
         }
     }
 }

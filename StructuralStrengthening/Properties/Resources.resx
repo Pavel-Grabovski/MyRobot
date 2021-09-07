@@ -118,67 +118,73 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="SquareColumnsReinforcement_Type1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\SquareColumnsReinforcement_Type1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SquareColumnsReinforcement_Type2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\SquareColumnsReinforcement_Type2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="formSquareColumnsReinforcementType1_MainOverlappingRods" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType1_MainOverlappingRods.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="formSquareColumnsReinforcementType1_MainWeldingRods" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType1_MainWeldingRods.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SquareColumnsReinforcement_Type4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SquareColumnsReinforcement_Type4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="formSquareColumnsReinforcementType1_Section" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\formSquareColumnsReinforcementType1_Section.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="formSquareColumnsReinforcementType1_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType1_SizeAndStep.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="formSquareColumnsReinforcementType2_Section" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType2_Section.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="formSquareColumnsReinforcementType2_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType2_SizeAndStep.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="formSquareColumnsReinforcementType3_Section" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType3_Section.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="formSquareColumnsReinforcementType3_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType3_SizeAndStep.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="formSquareColumnsReinforcementType4_Section" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\formSquareColumnsReinforcementType4_Section.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="formSquareColumnsReinforcementType4_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType4_SizeAndStep.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="formSquareColumnsReinforcementType5_Section" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType5_Section.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="formSquareColumnsReinforcementType5_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType5_SizeAndStep.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="formSquareColumnsReinforcementType6_Section" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\formSquareColumnsReinforcementType6_Section.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="formSquareColumnsReinforcementType6_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\formSquareColumnsReinforcementType6_SizeAndStep.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="formSquareColumnsReinforcementType3_Section" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\formSquareColumnsReinforcementType3_Section.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LogoRebar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\LogoRebar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SquareColumnsReinforcement_Type3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\SquareColumnsReinforcement_Type3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SquareColumnsReinforcement_Type4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\SquareColumnsReinforcement_Type4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SquareColumnsReinforcement_Type1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SquareColumnsReinforcement_Type1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SquareColumnsReinforcement_Type5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\SquareColumnsReinforcement_Type5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="formSquareColumnsReinforcementType5_Section" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\formSquareColumnsReinforcementType5_Section.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SquareColumnsReinforcement_Type6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\SquareColumnsReinforcement_Type6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SquareColumnsReinforcementType6_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SquareColumnsReinforcementType6_SizeAndStep.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SquareColumnsReinforcement_Type2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SquareColumnsReinforcement_Type2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="formSquareColumnsReinforcementType2_Section" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\formSquareColumnsReinforcementType2_Section.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LogoRebar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\LogoRebar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StraightOutlets" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\StraightOutlets.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SquareColumnsReinforcement_Type3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SquareColumnsReinforcement_Type3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CurvedOutlets" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\CurvedOutlets.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExpandRebar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\ExpandRebar.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NotExpandRebar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\NotExpandRebar.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SquareColumnsReinforcementType1_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SquareColumnsReinforcementType1_SizeAndStep.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SquareColumnsReinforcementType2_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SquareColumnsReinforcementType2_SizeAndStep.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SquareColumnsReinforcementType3_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SquareColumnsReinforcementType3_SizeAndStep.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SquareColumnsReinforcementType4_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SquareColumnsReinforcementType4_SizeAndStep.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SquareColumnsReinforcementType5_SizeAndStep" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\SquareColumnsReinforcementType5_SizeAndStep.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -31,7 +31,6 @@ namespace StructuralStrengthening
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReinforcementSquareColumnsView));
             this.butSelectColumns = new System.Windows.Forms.Button();
             this.lblIdHeading = new System.Windows.Forms.Label();
             this.lblIdValue = new System.Windows.Forms.Label();
@@ -62,6 +61,7 @@ namespace StructuralStrengthening
             this.lblCountColumnHeading = new System.Windows.Forms.Label();
             this.combBoxColumns = new System.Windows.Forms.ComboBox();
             this.lblCountColumnValue = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBoxRebarOutletTypes = new System.Windows.Forms.GroupBox();
             this.textBoxAdditionalOffsetBendBar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,11 +69,13 @@ namespace StructuralStrengthening
             this.radioButMainOverlappingRods = new System.Windows.Forms.RadioButton();
             this.radioButMainWeldingRods = new System.Windows.Forms.RadioButton();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.groupParamSizeStepReinforcement = new System.Windows.Forms.GroupBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.butReinforceColumns = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.textBoxBottomOffsetMainBars = new System.Windows.Forms.TextBox();
             this.textBoxCountLowerClamps = new System.Windows.Forms.TextBox();
-            this.textBoxCountTopClamps = new System.Windows.Forms.TextBox();
             this.textBoxCountMiddleClamps = new System.Windows.Forms.TextBox();
             this.textBoxStepMiddleClamps = new System.Windows.Forms.TextBox();
             this.textBoxBottomOffsetBasicClamp = new System.Windows.Forms.TextBox();
@@ -81,8 +83,6 @@ namespace StructuralStrengthening
             this.textBoxStepTopClamps = new System.Windows.Forms.TextBox();
             this.textBoxOverlapThickness = new System.Windows.Forms.TextBox();
             this.textBoxRebarOutletsLength = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupParamTypeReinforcement = new System.Windows.Forms.GroupBox();
             this.lblRebarCoverTypes = new System.Windows.Forms.Label();
             this.comboBoxFirstMainBarTapes = new System.Windows.Forms.ComboBox();
             this.comboBoxBasicClampBarTapes = new System.Windows.Forms.ComboBox();
@@ -96,14 +96,15 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterLeftRebarOffset_2 = new System.Windows.Forms.TextBox();
             this.textBoxSecondСenterRightRebarOffset_2 = new System.Windows.Forms.TextBox();
             this.textBoxSecondСenterRightRebarOffset_1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.butReinforceColumns = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBoxRebarSolidInView = new System.Windows.Forms.CheckBox();
             this.checkBoxShowUnoverlapped = new System.Windows.Forms.CheckBox();
             this.checkBoxDeleteRebars = new System.Windows.Forms.CheckBox();
+            this.groupParamSizeStepReinforcement = new System.Windows.Forms.GroupBox();
+            this.textBoxCountTopClamps = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupParamTypeReinforcement = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBoxReinforcementType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -114,6 +115,7 @@ namespace StructuralStrengthening
             this.groupBoxSelectionColumns.SuspendLayout();
             this.groupBoxRebarOutletTypes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.groupParamSizeStepReinforcement.SuspendLayout();
             this.groupParamTypeReinforcement.SuspendLayout();
@@ -123,7 +125,7 @@ namespace StructuralStrengthening
             // 
             this.butSelectColumns.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butSelectColumns.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.butSelectColumns.Location = new System.Drawing.Point(8, 160);
+            this.butSelectColumns.Location = new System.Drawing.Point(5, 199);
             this.butSelectColumns.Name = "butSelectColumns";
             this.butSelectColumns.Size = new System.Drawing.Size(182, 29);
             this.butSelectColumns.TabIndex = 0;
@@ -326,7 +328,7 @@ namespace StructuralStrengthening
             this.groupBoxReinforcementType.Controls.Add(this.radioButRebarType2);
             this.groupBoxReinforcementType.Controls.Add(this.pictureBox1);
             this.groupBoxReinforcementType.Controls.Add(this.radioButRebarType1);
-            this.groupBoxReinforcementType.Location = new System.Drawing.Point(12, 212);
+            this.groupBoxReinforcementType.Location = new System.Drawing.Point(12, 256);
             this.groupBoxReinforcementType.Margin = new System.Windows.Forms.Padding(5);
             this.groupBoxReinforcementType.Name = "groupBoxReinforcementType";
             this.groupBoxReinforcementType.Padding = new System.Windows.Forms.Padding(5);
@@ -451,6 +453,7 @@ namespace StructuralStrengthening
             this.groupBoxSelectionColumns.Controls.Add(this.lblFamilyValue);
             this.groupBoxSelectionColumns.Controls.Add(this.lblMaterialHeading);
             this.groupBoxSelectionColumns.Controls.Add(this.lblSectionValue);
+            this.groupBoxSelectionColumns.Controls.Add(this.label1);
             this.groupBoxSelectionColumns.Controls.Add(this.lblSectionHeading);
             this.groupBoxSelectionColumns.Controls.Add(this.lblMaterialValue);
             this.groupBoxSelectionColumns.Controls.Add(this.lblIdValue);
@@ -460,7 +463,7 @@ namespace StructuralStrengthening
             this.groupBoxSelectionColumns.Margin = new System.Windows.Forms.Padding(5);
             this.groupBoxSelectionColumns.Name = "groupBoxSelectionColumns";
             this.groupBoxSelectionColumns.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBoxSelectionColumns.Size = new System.Drawing.Size(385, 197);
+            this.groupBoxSelectionColumns.Size = new System.Drawing.Size(385, 236);
             this.groupBoxSelectionColumns.TabIndex = 5;
             this.groupBoxSelectionColumns.TabStop = false;
             // 
@@ -497,7 +500,7 @@ namespace StructuralStrengthening
             this.combBoxColumns.Enabled = false;
             this.combBoxColumns.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.combBoxColumns.FormattingEnabled = true;
-            this.combBoxColumns.Location = new System.Drawing.Point(195, 160);
+            this.combBoxColumns.Location = new System.Drawing.Point(195, 199);
             this.combBoxColumns.Name = "combBoxColumns";
             this.combBoxColumns.Size = new System.Drawing.Size(182, 28);
             this.combBoxColumns.Sorted = true;
@@ -517,6 +520,18 @@ namespace StructuralStrengthening
             this.lblCountColumnValue.TabIndex = 1;
             this.lblCountColumnValue.Text = "0";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(8, 156);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Высота";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // groupBoxRebarOutletTypes
             // 
             this.groupBoxRebarOutletTypes.Controls.Add(this.textBoxAdditionalOffsetBendBar);
@@ -525,18 +540,19 @@ namespace StructuralStrengthening
             this.groupBoxRebarOutletTypes.Controls.Add(this.radioButMainOverlappingRods);
             this.groupBoxRebarOutletTypes.Controls.Add(this.radioButMainWeldingRods);
             this.groupBoxRebarOutletTypes.Controls.Add(this.pictureBox8);
+            this.groupBoxRebarOutletTypes.Controls.Add(this.pictureBox9);
             this.groupBoxRebarOutletTypes.Controls.Add(this.pictureBox7);
             this.groupBoxRebarOutletTypes.Location = new System.Drawing.Point(407, 12);
             this.groupBoxRebarOutletTypes.Margin = new System.Windows.Forms.Padding(5);
             this.groupBoxRebarOutletTypes.Name = "groupBoxRebarOutletTypes";
             this.groupBoxRebarOutletTypes.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBoxRebarOutletTypes.Size = new System.Drawing.Size(509, 197);
+            this.groupBoxRebarOutletTypes.Size = new System.Drawing.Size(509, 236);
             this.groupBoxRebarOutletTypes.TabIndex = 6;
             this.groupBoxRebarOutletTypes.TabStop = false;
             // 
             // textBoxAdditionalOffsetBendBar
             // 
-            this.textBoxAdditionalOffsetBendBar.Location = new System.Drawing.Point(358, 160);
+            this.textBoxAdditionalOffsetBendBar.Location = new System.Drawing.Point(218, 43);
             this.textBoxAdditionalOffsetBendBar.Name = "textBoxAdditionalOffsetBendBar";
             this.textBoxAdditionalOffsetBendBar.Size = new System.Drawing.Size(59, 20);
             this.textBoxAdditionalOffsetBendBar.TabIndex = 9;
@@ -546,7 +562,7 @@ namespace StructuralStrengthening
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(185, 10);
+            this.label4.Location = new System.Drawing.Point(333, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 16);
             this.label4.TabIndex = 1;
@@ -557,18 +573,19 @@ namespace StructuralStrengthening
             // 
             this.checkBoxIsOutletsInside.AutoSize = true;
             this.checkBoxIsOutletsInside.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxIsOutletsInside.Location = new System.Drawing.Point(336, 56);
+            this.checkBoxIsOutletsInside.Location = new System.Drawing.Point(331, 38);
             this.checkBoxIsOutletsInside.Name = "checkBoxIsOutletsInside";
-            this.checkBoxIsOutletsInside.Size = new System.Drawing.Size(122, 17);
+            this.checkBoxIsOutletsInside.Size = new System.Drawing.Size(160, 17);
             this.checkBoxIsOutletsInside.TabIndex = 8;
-            this.checkBoxIsOutletsInside.Text = "Выпуски во внутрь";
+            this.checkBoxIsOutletsInside.Text = "Гнутые выпуски во внутрь";
             this.checkBoxIsOutletsInside.UseVisualStyleBackColor = true;
+            this.checkBoxIsOutletsInside.CheckedChanged += new System.EventHandler(this.checkBoxIsOutletsInside_CheckedChanged);
             // 
             // radioButMainOverlappingRods
             // 
             this.radioButMainOverlappingRods.AutoSize = true;
             this.radioButMainOverlappingRods.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButMainOverlappingRods.Location = new System.Drawing.Point(192, 33);
+            this.radioButMainOverlappingRods.Location = new System.Drawing.Point(192, 15);
             this.radioButMainOverlappingRods.Name = "radioButMainOverlappingRods";
             this.radioButMainOverlappingRods.Size = new System.Drawing.Size(107, 17);
             this.radioButMainOverlappingRods.TabIndex = 5;
@@ -581,7 +598,7 @@ namespace StructuralStrengthening
             // 
             this.radioButMainWeldingRods.AutoSize = true;
             this.radioButMainWeldingRods.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButMainWeldingRods.Location = new System.Drawing.Point(27, 33);
+            this.radioButMainWeldingRods.Location = new System.Drawing.Point(17, 16);
             this.radioButMainWeldingRods.Name = "radioButMainWeldingRods";
             this.radioButMainWeldingRods.Size = new System.Drawing.Size(113, 17);
             this.radioButMainWeldingRods.TabIndex = 5;
@@ -592,86 +609,96 @@ namespace StructuralStrengthening
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(27, 56);
+            this.pictureBox8.ErrorImage = null;
+            this.pictureBox8.Image = global::StructuralStrengthening.Properties.Resources.StraightOutlets;
+            this.pictureBox8.Location = new System.Drawing.Point(8, 38);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(117, 133);
+            this.pictureBox8.Size = new System.Drawing.Size(140, 190);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 3;
             this.pictureBox8.TabStop = false;
             // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.SystemColors.Window;
+            this.pictureBox9.ErrorImage = null;
+            this.pictureBox9.Image = global::StructuralStrengthening.Properties.Resources.NotExpandRebar;
+            this.pictureBox9.Location = new System.Drawing.Point(327, 57);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(170, 170);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 3;
+            this.pictureBox9.TabStop = false;
+            // 
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.SystemColors.Window;
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(192, 56);
+            this.pictureBox7.ErrorImage = null;
+            this.pictureBox7.Image = global::StructuralStrengthening.Properties.Resources.CurvedOutlets;
+            this.pictureBox7.Location = new System.Drawing.Point(166, 38);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(117, 133);
+            this.pictureBox7.Size = new System.Drawing.Size(140, 190);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 3;
             this.pictureBox7.TabStop = false;
             // 
-            // groupParamSizeStepReinforcement
+            // butReinforceColumns
             // 
-            this.groupParamSizeStepReinforcement.BackgroundImage = global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType1_SizeAndStep;
-            this.groupParamSizeStepReinforcement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxBottomOffsetMainBars);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountLowerClamps);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountTopClamps);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountMiddleClamps);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepMiddleClamps);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxBottomOffsetBasicClamp);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepLowerClamps);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepTopClamps);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxOverlapThickness);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxRebarOutletsLength);
-            this.groupParamSizeStepReinforcement.Controls.Add(this.label6);
-            this.groupParamSizeStepReinforcement.Location = new System.Drawing.Point(926, 12);
-            this.groupParamSizeStepReinforcement.Margin = new System.Windows.Forms.Padding(5);
-            this.groupParamSizeStepReinforcement.Name = "groupParamSizeStepReinforcement";
-            this.groupParamSizeStepReinforcement.Padding = new System.Windows.Forms.Padding(5);
-            this.groupParamSizeStepReinforcement.Size = new System.Drawing.Size(336, 534);
-            this.groupParamSizeStepReinforcement.TabIndex = 6;
-            this.groupParamSizeStepReinforcement.TabStop = false;
+            this.butReinforceColumns.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.butReinforceColumns.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.butReinforceColumns.Location = new System.Drawing.Point(1272, 552);
+            this.butReinforceColumns.Margin = new System.Windows.Forms.Padding(5);
+            this.butReinforceColumns.Name = "butReinforceColumns";
+            this.butReinforceColumns.Size = new System.Drawing.Size(98, 29);
+            this.butReinforceColumns.TabIndex = 7;
+            this.butReinforceColumns.Text = "Армировать";
+            this.toolTip.SetToolTip(this.butReinforceColumns, "Армировать выбранные колонны");
+            this.butReinforceColumns.UseVisualStyleBackColor = true;
+            this.butReinforceColumns.Click += new System.EventHandler(this.butReinforceColumns_Click);
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(1272, 17);
+            this.button2.Margin = new System.Windows.Forms.Padding(5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(98, 29);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Настройки";
+            this.toolTip.SetToolTip(this.button2, "Изменить настройки плагина");
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // textBoxBottomOffsetMainBars
             // 
-            this.textBoxBottomOffsetMainBars.Location = new System.Drawing.Point(251, 476);
+            this.textBoxBottomOffsetMainBars.Location = new System.Drawing.Point(40, 500);
             this.textBoxBottomOffsetMainBars.Name = "textBoxBottomOffsetMainBars";
             this.textBoxBottomOffsetMainBars.Size = new System.Drawing.Size(45, 20);
             this.textBoxBottomOffsetMainBars.TabIndex = 2;
-            this.textBoxBottomOffsetMainBars.Text = "600";
+            this.textBoxBottomOffsetMainBars.Text = "400";
             this.toolTip.SetToolTip(this.textBoxBottomOffsetMainBars, "Отступ продольной арматуры снизу");
             // 
             // textBoxCountLowerClamps
             // 
-            this.textBoxCountLowerClamps.Location = new System.Drawing.Point(256, 445);
+            this.textBoxCountLowerClamps.Location = new System.Drawing.Point(303, 418);
             this.textBoxCountLowerClamps.Name = "textBoxCountLowerClamps";
-            this.textBoxCountLowerClamps.Size = new System.Drawing.Size(45, 20);
+            this.textBoxCountLowerClamps.Size = new System.Drawing.Size(25, 20);
             this.textBoxCountLowerClamps.TabIndex = 2;
-            this.textBoxCountLowerClamps.Text = "4";
+            this.textBoxCountLowerClamps.Text = "6";
             this.toolTip.SetToolTip(this.textBoxCountLowerClamps, "Количество хомутов снизу");
-            // 
-            // textBoxCountTopClamps
-            // 
-            this.textBoxCountTopClamps.Location = new System.Drawing.Point(256, 200);
-            this.textBoxCountTopClamps.Name = "textBoxCountTopClamps";
-            this.textBoxCountTopClamps.Size = new System.Drawing.Size(40, 20);
-            this.textBoxCountTopClamps.TabIndex = 2;
-            this.textBoxCountTopClamps.Text = "5";
             // 
             // textBoxCountMiddleClamps
             // 
-            this.textBoxCountMiddleClamps.Location = new System.Drawing.Point(256, 323);
+            this.textBoxCountMiddleClamps.Location = new System.Drawing.Point(303, 304);
             this.textBoxCountMiddleClamps.Name = "textBoxCountMiddleClamps";
-            this.textBoxCountMiddleClamps.Size = new System.Drawing.Size(40, 20);
+            this.textBoxCountMiddleClamps.Size = new System.Drawing.Size(25, 20);
             this.textBoxCountMiddleClamps.TabIndex = 2;
-            this.textBoxCountMiddleClamps.Text = "8";
+            this.textBoxCountMiddleClamps.Text = "5";
             this.toolTip.SetToolTip(this.textBoxCountMiddleClamps, "Количество хомутов посередине");
             // 
             // textBoxStepMiddleClamps
             // 
-            this.textBoxStepMiddleClamps.Location = new System.Drawing.Point(205, 323);
+            this.textBoxStepMiddleClamps.Location = new System.Drawing.Point(230, 304);
             this.textBoxStepMiddleClamps.Name = "textBoxStepMiddleClamps";
             this.textBoxStepMiddleClamps.Size = new System.Drawing.Size(45, 20);
             this.textBoxStepMiddleClamps.TabIndex = 2;
@@ -680,16 +707,16 @@ namespace StructuralStrengthening
             // 
             // textBoxBottomOffsetBasicClamp
             // 
-            this.textBoxBottomOffsetBasicClamp.Location = new System.Drawing.Point(65, 476);
+            this.textBoxBottomOffsetBasicClamp.Location = new System.Drawing.Point(230, 484);
             this.textBoxBottomOffsetBasicClamp.Name = "textBoxBottomOffsetBasicClamp";
             this.textBoxBottomOffsetBasicClamp.Size = new System.Drawing.Size(45, 20);
             this.textBoxBottomOffsetBasicClamp.TabIndex = 2;
-            this.textBoxBottomOffsetBasicClamp.Text = "80";
+            this.textBoxBottomOffsetBasicClamp.Text = "200";
             this.toolTip.SetToolTip(this.textBoxBottomOffsetBasicClamp, "Отступ поперечных стержней снизу");
             // 
             // textBoxStepLowerClamps
             // 
-            this.textBoxStepLowerClamps.Location = new System.Drawing.Point(205, 445);
+            this.textBoxStepLowerClamps.Location = new System.Drawing.Point(230, 418);
             this.textBoxStepLowerClamps.Name = "textBoxStepLowerClamps";
             this.textBoxStepLowerClamps.Size = new System.Drawing.Size(45, 20);
             this.textBoxStepLowerClamps.TabIndex = 2;
@@ -698,7 +725,7 @@ namespace StructuralStrengthening
             // 
             // textBoxStepTopClamps
             // 
-            this.textBoxStepTopClamps.Location = new System.Drawing.Point(205, 200);
+            this.textBoxStepTopClamps.Location = new System.Drawing.Point(230, 190);
             this.textBoxStepTopClamps.Name = "textBoxStepTopClamps";
             this.textBoxStepTopClamps.Size = new System.Drawing.Size(45, 20);
             this.textBoxStepTopClamps.TabIndex = 2;
@@ -707,7 +734,7 @@ namespace StructuralStrengthening
             // 
             // textBoxOverlapThickness
             // 
-            this.textBoxOverlapThickness.Location = new System.Drawing.Point(18, 136);
+            this.textBoxOverlapThickness.Location = new System.Drawing.Point(283, 115);
             this.textBoxOverlapThickness.Name = "textBoxOverlapThickness";
             this.textBoxOverlapThickness.Size = new System.Drawing.Size(45, 20);
             this.textBoxOverlapThickness.TabIndex = 2;
@@ -716,48 +743,12 @@ namespace StructuralStrengthening
             // 
             // textBoxRebarOutletsLength
             // 
-            this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(230, 83);
+            this.textBoxRebarOutletsLength.Location = new System.Drawing.Point(283, 72);
             this.textBoxRebarOutletsLength.Name = "textBoxRebarOutletsLength";
             this.textBoxRebarOutletsLength.Size = new System.Drawing.Size(45, 20);
             this.textBoxRebarOutletsLength.TabIndex = 2;
-            this.textBoxRebarOutletsLength.Text = "500";
+            this.textBoxRebarOutletsLength.Text = "200";
             this.toolTip.SetToolTip(this.textBoxRebarOutletsLength, "Длина выпусков арматуры");
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(8, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 50);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Параметры армирования";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // groupParamTypeReinforcement
-            // 
-            this.groupParamTypeReinforcement.BackgroundImage = global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType6_Section;
-            this.groupParamTypeReinforcement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.groupParamTypeReinforcement.Controls.Add(this.lblRebarCoverTypes);
-            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxFirstMainBarTapes);
-            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxBasicClampBarTapes);
-            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
-            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondMainBarTapes);
-            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLeftRebarOffset_1);
-            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterTopRebarOffset_2);
-            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterTopRebarOffset_1);
-            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLowerRebarOffset_1);
-            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLowerRebarOffset_2);
-            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLeftRebarOffset_2);
-            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterRightRebarOffset_2);
-            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterRightRebarOffset_1);
-            this.groupParamTypeReinforcement.Controls.Add(this.label5);
-            this.groupParamTypeReinforcement.Location = new System.Drawing.Point(407, 212);
-            this.groupParamTypeReinforcement.Margin = new System.Windows.Forms.Padding(5);
-            this.groupParamTypeReinforcement.Name = "groupParamTypeReinforcement";
-            this.groupParamTypeReinforcement.Padding = new System.Windows.Forms.Padding(5);
-            this.groupParamTypeReinforcement.Size = new System.Drawing.Size(509, 334);
-            this.groupParamTypeReinforcement.TabIndex = 6;
-            this.groupParamTypeReinforcement.TabStop = false;
             // 
             // lblRebarCoverTypes
             // 
@@ -898,50 +889,12 @@ namespace StructuralStrengthening
             this.textBoxSecondСenterRightRebarOffset_1.Text = "60";
             this.toolTip.SetToolTip(this.textBoxSecondСenterRightRebarOffset_1, "Укажите отступ!");
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(164, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(187, 21);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Параметры армирования";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // butReinforceColumns
-            // 
-            this.butReinforceColumns.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.butReinforceColumns.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.butReinforceColumns.Location = new System.Drawing.Point(1272, 517);
-            this.butReinforceColumns.Margin = new System.Windows.Forms.Padding(5);
-            this.butReinforceColumns.Name = "butReinforceColumns";
-            this.butReinforceColumns.Size = new System.Drawing.Size(98, 29);
-            this.butReinforceColumns.TabIndex = 7;
-            this.butReinforceColumns.Text = "Армировать";
-            this.toolTip.SetToolTip(this.butReinforceColumns, "Армировать выбранные колонны");
-            this.butReinforceColumns.UseVisualStyleBackColor = true;
-            this.butReinforceColumns.Click += new System.EventHandler(this.butReinforceColumns_Click);
-            // 
-            // button2
-            // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(1272, 17);
-            this.button2.Margin = new System.Windows.Forms.Padding(5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 29);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Настройки";
-            this.toolTip.SetToolTip(this.button2, "Изменить настройки плагина");
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(1272, 457);
+            this.checkBox1.Location = new System.Drawing.Point(1270, 462);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(133, 17);
             this.checkBox1.TabIndex = 8;
@@ -954,7 +907,7 @@ namespace StructuralStrengthening
             this.checkBoxRebarSolidInView.Checked = true;
             this.checkBoxRebarSolidInView.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxRebarSolidInView.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxRebarSolidInView.Location = new System.Drawing.Point(1270, 375);
+            this.checkBoxRebarSolidInView.Location = new System.Drawing.Point(1270, 370);
             this.checkBoxRebarSolidInView.Name = "checkBoxRebarSolidInView";
             this.checkBoxRebarSolidInView.Size = new System.Drawing.Size(122, 17);
             this.checkBoxRebarSolidInView.TabIndex = 8;
@@ -967,7 +920,7 @@ namespace StructuralStrengthening
             this.checkBoxShowUnoverlapped.Checked = true;
             this.checkBoxShowUnoverlapped.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowUnoverlapped.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxShowUnoverlapped.Location = new System.Drawing.Point(1270, 398);
+            this.checkBoxShowUnoverlapped.Location = new System.Drawing.Point(1270, 418);
             this.checkBoxShowUnoverlapped.Name = "checkBoxShowUnoverlapped";
             this.checkBoxShowUnoverlapped.Size = new System.Drawing.Size(153, 17);
             this.checkBoxShowUnoverlapped.TabIndex = 8;
@@ -977,12 +930,90 @@ namespace StructuralStrengthening
             // checkBoxDeleteRebars
             // 
             this.checkBoxDeleteRebars.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBoxDeleteRebars.Location = new System.Drawing.Point(1270, 307);
+            this.checkBoxDeleteRebars.Location = new System.Drawing.Point(1270, 303);
             this.checkBoxDeleteRebars.Name = "checkBoxDeleteRebars";
             this.checkBoxDeleteRebars.Size = new System.Drawing.Size(137, 46);
             this.checkBoxDeleteRebars.TabIndex = 9;
             this.checkBoxDeleteRebars.Text = "Удалить ранее созданую арматуру";
             this.checkBoxDeleteRebars.UseVisualStyleBackColor = true;
+            // 
+            // groupParamSizeStepReinforcement
+            // 
+            this.groupParamSizeStepReinforcement.BackgroundImage = global::StructuralStrengthening.Properties.Resources.SquareColumnsReinforcementType6_SizeAndStep;
+            this.groupParamSizeStepReinforcement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxBottomOffsetMainBars);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountLowerClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountTopClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxCountMiddleClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepMiddleClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxBottomOffsetBasicClamp);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepLowerClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxStepTopClamps);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxOverlapThickness);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.textBoxRebarOutletsLength);
+            this.groupParamSizeStepReinforcement.Controls.Add(this.label6);
+            this.groupParamSizeStepReinforcement.Location = new System.Drawing.Point(926, 12);
+            this.groupParamSizeStepReinforcement.Margin = new System.Windows.Forms.Padding(5);
+            this.groupParamSizeStepReinforcement.Name = "groupParamSizeStepReinforcement";
+            this.groupParamSizeStepReinforcement.Padding = new System.Windows.Forms.Padding(5);
+            this.groupParamSizeStepReinforcement.Size = new System.Drawing.Size(336, 578);
+            this.groupParamSizeStepReinforcement.TabIndex = 6;
+            this.groupParamSizeStepReinforcement.TabStop = false;
+            // 
+            // textBoxCountTopClamps
+            // 
+            this.textBoxCountTopClamps.Location = new System.Drawing.Point(303, 190);
+            this.textBoxCountTopClamps.Name = "textBoxCountTopClamps";
+            this.textBoxCountTopClamps.Size = new System.Drawing.Size(25, 20);
+            this.textBoxCountTopClamps.TabIndex = 2;
+            this.textBoxCountTopClamps.Text = "4";
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(18, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(295, 23);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Параметры армирования";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // groupParamTypeReinforcement
+            // 
+            this.groupParamTypeReinforcement.BackgroundImage = global::StructuralStrengthening.Properties.Resources.formSquareColumnsReinforcementType6_Section;
+            this.groupParamTypeReinforcement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.groupParamTypeReinforcement.Controls.Add(this.lblRebarCoverTypes);
+            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxFirstMainBarTapes);
+            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxBasicClampBarTapes);
+            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondClampBarTapes);
+            this.groupParamTypeReinforcement.Controls.Add(this.comboBoxSecondMainBarTapes);
+            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLeftRebarOffset_1);
+            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterTopRebarOffset_2);
+            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterTopRebarOffset_1);
+            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLowerRebarOffset_1);
+            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLowerRebarOffset_2);
+            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterLeftRebarOffset_2);
+            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterRightRebarOffset_2);
+            this.groupParamTypeReinforcement.Controls.Add(this.textBoxSecondСenterRightRebarOffset_1);
+            this.groupParamTypeReinforcement.Controls.Add(this.label5);
+            this.groupParamTypeReinforcement.Location = new System.Drawing.Point(407, 256);
+            this.groupParamTypeReinforcement.Margin = new System.Windows.Forms.Padding(5);
+            this.groupParamTypeReinforcement.Name = "groupParamTypeReinforcement";
+            this.groupParamTypeReinforcement.Padding = new System.Windows.Forms.Padding(5);
+            this.groupParamTypeReinforcement.Size = new System.Drawing.Size(509, 334);
+            this.groupParamTypeReinforcement.TabIndex = 6;
+            this.groupParamTypeReinforcement.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(180, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(187, 21);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Параметры армирования";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ReinforcementSquareColumnsView
             // 
@@ -990,7 +1021,7 @@ namespace StructuralStrengthening
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1419, 560);
+            this.ClientSize = new System.Drawing.Size(1419, 602);
             this.Controls.Add(this.checkBoxDeleteRebars);
             this.Controls.Add(this.checkBoxShowUnoverlapped);
             this.Controls.Add(this.checkBoxRebarSolidInView);
@@ -1019,6 +1050,7 @@ namespace StructuralStrengthening
             this.groupBoxRebarOutletTypes.ResumeLayout(false);
             this.groupBoxRebarOutletTypes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.groupParamSizeStepReinforcement.ResumeLayout(false);
             this.groupParamSizeStepReinforcement.PerformLayout();
@@ -1103,5 +1135,7 @@ namespace StructuralStrengthening
         private System.Windows.Forms.TextBox textBoxBottomOffsetMainBars;
         private System.Windows.Forms.CheckBox checkBoxDeleteRebars;
         private System.Windows.Forms.TextBox textBoxCountTopClamps;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox9;
     }
 }

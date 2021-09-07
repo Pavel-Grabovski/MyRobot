@@ -63,9 +63,9 @@ namespace StructuralStrengthening.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap formSquareColumnsReinforcementType1_MainOverlappingRods {
+        internal static System.Drawing.Bitmap CurvedOutlets {
             get {
-                object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType1_MainOverlappingRods", resourceCulture);
+                object obj = ResourceManager.GetObject("CurvedOutlets", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace StructuralStrengthening.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap formSquareColumnsReinforcementType1_MainWeldingRods {
+        internal static System.Drawing.Bitmap ExpandRebar {
             get {
-                object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType1_MainWeldingRods", resourceCulture);
+                object obj = ResourceManager.GetObject("ExpandRebar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,29 +93,9 @@ namespace StructuralStrengthening.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap formSquareColumnsReinforcementType1_SizeAndStep {
-            get {
-                object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType1_SizeAndStep", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap formSquareColumnsReinforcementType2_Section {
             get {
                 object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType2_Section", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap formSquareColumnsReinforcementType2_SizeAndStep {
-            get {
-                object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType2_SizeAndStep", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,29 +113,9 @@ namespace StructuralStrengthening.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap formSquareColumnsReinforcementType3_SizeAndStep {
-            get {
-                object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType3_SizeAndStep", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap formSquareColumnsReinforcementType4_Section {
             get {
                 object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType4_Section", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap formSquareColumnsReinforcementType4_SizeAndStep {
-            get {
-                object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType4_SizeAndStep", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,16 +133,6 @@ namespace StructuralStrengthening.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap formSquareColumnsReinforcementType5_SizeAndStep {
-            get {
-                object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType5_SizeAndStep", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap formSquareColumnsReinforcementType6_Section {
             get {
                 object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType6_Section", resourceCulture);
@@ -193,9 +143,9 @@ namespace StructuralStrengthening.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap formSquareColumnsReinforcementType6_SizeAndStep {
+        internal static System.Drawing.Bitmap LogoRebar {
             get {
-                object obj = ResourceManager.GetObject("formSquareColumnsReinforcementType6_SizeAndStep", resourceCulture);
+                object obj = ResourceManager.GetObject("LogoRebar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +153,9 @@ namespace StructuralStrengthening.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LogoRebar {
+        internal static System.Drawing.Bitmap NotExpandRebar {
             get {
-                object obj = ResourceManager.GetObject("LogoRebar", resourceCulture);
+                object obj = ResourceManager.GetObject("NotExpandRebar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,6 +216,76 @@ namespace StructuralStrengthening.Properties {
         internal static System.Drawing.Bitmap SquareColumnsReinforcement_Type6 {
             get {
                 object obj = ResourceManager.GetObject("SquareColumnsReinforcement_Type6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SquareColumnsReinforcementType1_SizeAndStep {
+            get {
+                object obj = ResourceManager.GetObject("SquareColumnsReinforcementType1_SizeAndStep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SquareColumnsReinforcementType2_SizeAndStep {
+            get {
+                object obj = ResourceManager.GetObject("SquareColumnsReinforcementType2_SizeAndStep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SquareColumnsReinforcementType3_SizeAndStep {
+            get {
+                object obj = ResourceManager.GetObject("SquareColumnsReinforcementType3_SizeAndStep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SquareColumnsReinforcementType4_SizeAndStep {
+            get {
+                object obj = ResourceManager.GetObject("SquareColumnsReinforcementType4_SizeAndStep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SquareColumnsReinforcementType5_SizeAndStep {
+            get {
+                object obj = ResourceManager.GetObject("SquareColumnsReinforcementType5_SizeAndStep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SquareColumnsReinforcementType6_SizeAndStep {
+            get {
+                object obj = ResourceManager.GetObject("SquareColumnsReinforcementType6_SizeAndStep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StraightOutlets {
+            get {
+                object obj = ResourceManager.GetObject("StraightOutlets", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
