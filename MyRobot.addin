@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+<AddIn Type="Application">
+                <Name>MyRobot</Name>
+                <Assembly>MyRobot\StructuralStrengthening.dll</Assembly>
+                <AddInId>691eafea-425c-4697-8b65-7d4492f3634e</AddInId>
+                <FullClassName> MyRobot.ReinforcementSquareColumns.Add</FullClassName>
+                <VendorId>Pavel_Grabovskiy</VendorId>
+</AddIn>
+</RevitAddIns>

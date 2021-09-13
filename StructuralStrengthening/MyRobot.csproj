@@ -87,15 +87,10 @@
     <None Include="images\CurvedOutlets.jpg" />
     <Content Include="images\ExpandRebar.jpg" />
     <Content Include="images\formSquareColumnsReinforcementType1_Section.png" />
-    <Content Include="images\formSquareColumnsReinforcementType1_SizeAndStep.PNG" />
     <Content Include="images\formSquareColumnsReinforcementType2_Section.png" />
-    <Content Include="images\formSquareColumnsReinforcementType2_SizeAndStep.PNG" />
     <Content Include="images\formSquareColumnsReinforcementType3_Section.png" />
-    <Content Include="images\formSquareColumnsReinforcementType3_SizeAndStep.PNG" />
     <Content Include="images\formSquareColumnsReinforcementType4_Section.png" />
-    <Content Include="images\formSquareColumnsReinforcementType4_SizeAndStep.PNG" />
     <Content Include="images\formSquareColumnsReinforcementType5_Section.png" />
-    <Content Include="images\formSquareColumnsReinforcementType5_SizeAndStep.PNG" />
     <Content Include="images\formSquareColumnsReinforcementType6_Section.png" />
     <Content Include="images\NotExpandRebar.jpg" />
     <None Include="images\SquareColumnsReinforcementType5_SizeAndStep.jpg" />
